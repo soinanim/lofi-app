@@ -9,14 +9,7 @@ const TodayWidget = () => {
     setInterval(() => setDate(new Date()), 30000);
   });
 
-  function dragStartHandler(e) {
-    e.target.style.backgroundColor = "red";
-  }
 
-  function dragEndHandler(e) {
-    console.log("end", e.target);
-    e.preventDefault();
-  }
 
   return (
     <Draggable

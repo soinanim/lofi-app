@@ -26,3 +26,6 @@
 .switch p {
   margin-bottom: 5px;
 }
+.widget {
+  cursor: pointer;
+}

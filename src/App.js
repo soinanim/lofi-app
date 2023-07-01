@@ -1,19 +1,12 @@
-import styles from './App.module.css';
-import Header from './components/Header/Header';
-import TodayWidget from './components/TodayWidget/TodayWidget';
+import { useState } from "react";
+import Main from "./components/Main/Main";
+
+
 
 function App() {
   return (
-    <div className={styles.app}>
-      <video
-        src='/videos/room-night.mp4'
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={styles.video}></video>
-      <Header />
-      <TodayWidget />
+    <div>
+      <Main />
     </div>
   );
 }
