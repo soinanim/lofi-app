@@ -20,9 +20,9 @@ const TodayWidget = () => {
 
   return (
     <Draggable
-      onStart={() => console.log("Перетаскивание началось")}
-      onStop={() => console.log("Перетаскивание закончилось")}
-      onDrag={() => console.log("Перетаскивание в процессе")}
+      // onStart={() => console.log("Перетаскивание началось")}
+      // onStop={() => console.log("Перетаскивание закончилось")}
+      // onDrag={() => console.log("Перетаскивание в процессе")}
     >
       <div className={styles.move}>
         {" "}
