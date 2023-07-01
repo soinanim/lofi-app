@@ -1,0 +1,25 @@
+.today {
+  padding-top: 35px;
+  margin-left: 150px;
+  margin-bottom: 20px;
+  min-width: 400px;
+  width: 400px;
+  font-weight: 500;
+
+  border: 1px solid green;
+}
+
+.first {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.heading {
+  font-size: 25px;
+}
+
+.paragraph {
+  font-size: 20px;
+}
