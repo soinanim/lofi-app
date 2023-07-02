@@ -2,8 +2,6 @@
   padding-top: 35px;
   margin-left: 150px;
   margin-bottom: 20px;
-
-
   border: 1px solid green;
 }
 
@@ -27,4 +25,10 @@
   width: 400px;
   font-weight: 500;
   cursor: move;
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  /* background-color: rgba(0,0,0,0.3); */
+  padding: 15px;
+  border-radius: 15px;
 }

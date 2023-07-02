@@ -11,7 +11,7 @@ const ThemeSwitch = () => {
 
   return (
     <Switch
-      checkedChildren={<Icon width='18px' height='18px' icon='tabler:sun' />}
+      checkedChildren={<Icon width='18px' height='18px' icon='tabler:sun' style={{paddingTop: '10%'}}/>}
       unCheckedChildren={
         <Icon width='18px' height='18px' icon='ph:moon-bold' />
       }
