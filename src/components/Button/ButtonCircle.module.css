@@ -1,0 +1,67 @@
+.popoverAction {
+    position: absolute;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 200px;
+    z-index: 3;
+    cursor: pointer;
+}
+
+
+.circleHover {
+    align-items: center;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+    transition: all .2s ease-in-out;
+}
+
+.circleHover div {
+    background-color: #fff;
+    border-radius: 50%;
+    height: 18px;
+    transition: all .2s ease-in-out;
+    width: 18px;
+}
+
+.popoverAction:hover .circleHover div {
+    background-color: #f2bb24;
+    
+}
+
+.popoverAction:hover .circleHover {
+    border-color: #f2bb24;
+    
+}
+
+.popoverAction:hover .popoverCard{
+    opacity: 1;
+}
+
+.popoverCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    margin-top: 8px;
+    min-width: 120px;
+    padding: 8px;
+ opacity: 0;
+    transition: all .2s ease-in-out;
+}
+
+.input {
+    cursor: pointer;
+}
+
+
+
+

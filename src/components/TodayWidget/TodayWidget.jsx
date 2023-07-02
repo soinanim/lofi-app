@@ -20,14 +20,14 @@ const TodayWidget = () => {
       <div className={styles.move}>
         {" "}
         <div className={styles.first}>
-          <p className={styles.heading}>Good afternoon</p>
+          <p className={styles.heading}>Доброго дня</p>
           <p className={styles.heading}>
             {date.toLocaleTimeString("en-US", {
               timeStyle: "short",
             })}
           </p>
         </div>
-        <p className={styles.paragraph}>{` It’s ${date.toLocaleString("en-US", {
+        <p className={styles.paragraph}>{` Сегодня ${date.toLocaleString("ru-Ru", {
           weekday: "long",
           month: "long",
           day: "2-digit",

@@ -26,8 +26,8 @@ const Header = ({ openWidget, setOpenWidget }) => {
           <Switch onChange={handleChange} />
         </div>
 
-        <div>music player</div>
-        <Button type="button" text="Login" />
+        <div>Проигрыватель</div>
+        <Button type="button" text="Войти" />
       </div>
     </header>
   );
