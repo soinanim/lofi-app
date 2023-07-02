@@ -37,6 +37,12 @@ select {
   font: inherit;
 }
 
+h5 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
 a {
   text-decoration: none;
 }
