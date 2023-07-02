@@ -1,0 +1,12 @@
+:global(.ant-switch) {
+  background: var(--main-bg);
+  transform: scale(1.4);
+}
+
+:global(.ant-switch.ant-switch-checked) {
+  background: var(--main-color);
+}
+
+:global(.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled)) {
+  background-color: var(--accent);
+}

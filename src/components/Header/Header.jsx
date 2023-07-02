@@ -1,33 +1,25 @@
-import React, { useState } from "react";
-import styles from "./Header.module.css";
-import Button from "../Button/Button";
-import { Switch } from "antd";
-import { SunOutlined } from '@ant-design/icons';
-const Header = ({ openWidget, setOpenWidget }) => {
-  const [checked, setChecked] = useState(false);
-  const handleChange = (checked) => {
-    setChecked(checked);
-    console.log(`Switch is ${checked ? "on" : "off"}`);
-  };
+import React from 'react';
+import Button from '../Button/Button';
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 
+import styles from './Header.module.css';
+import DateTimeWidget from '../DateTimeWidget/DateTimeWidget';
+
+const Header = ({ openWidget, setOpenWidget }) => {
   return (
     <header className={styles.header}>
       <div>Logo</div>
       <div className={styles.control}>
         <div
           className={styles.widget}
-          onClick={() => setOpenWidget(!openWidget)}
-        >
-          Время
+          onClick={() => setOpenWidget(!openWidget)}>
+          <DateTimeWidget isTime />
         </div>
 
-        <div className={styles.switch}>
-          {checked ? <p>On</p> : <p>Off</p>}
-          <Switch onChange={handleChange} />
-        </div>
+        <ThemeSwitch />
 
-        <div>Проигрыватель</div>
-        <Button type="button" text="Войти" />
+        <div>music player</div>
+        <Button type='button' text='Login' />
       </div>
     </header>
   );
