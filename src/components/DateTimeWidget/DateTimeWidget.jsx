@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import styles from './DateTimeWidget.module.css';
+import './DateTimeWidget.scss';
 
 const DateTimeWidget = ({ isTime, isDate }) => {
   const [date, setDate] = useState(new Date());

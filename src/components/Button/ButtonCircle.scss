@@ -1,0 +1,103 @@
+.popoverAction {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  z-index: 3;
+  cursor: pointer;
+
+  &:hover .circleHover {
+    border-color: var(--main-color);
+  }
+
+  &:hover .circleHover::before {
+    content: '';
+    background-color: var(--main-color);
+
+    border-radius: 50%;
+    height: 18px;
+    transition: all 0.2s ease-in-out;
+    width: 18px;
+  }
+
+  &:hover .popoverCard {
+    transform: scale(1);
+  }
+
+  .circleHover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .popoverCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin-top: 8px;
+    min-width: 120px;
+    padding: 8px;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out;
+
+    h5 {
+      margin-bottom: 10px;
+    }
+
+    .levelInput {
+      position: relative;
+      border-radius: 8px;
+
+      .trackFull {
+        display: flex;
+        background: #ffffff0d;
+        border-radius: 50px;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 0;
+
+        .track {
+          background: var(--main-color);
+          border-radius: 0 8px 8px 0;
+          height: 100%;
+        }
+      }
+
+      .input {
+        cursor: pointer;
+      }
+
+      input[type='range'] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: initial;
+        display: flex;
+        justify-content: center;
+        height: 6px;
+        width: 100%;
+        position: relative;
+
+        &::-webkit-slider-thumb {
+          background: var(--main-color);
+          width: 15px;
+          height: 15px;
+          border-radius: 9px;
+          -webkit-appearance: none;
+        }
+      }
+    }
+  }
+}

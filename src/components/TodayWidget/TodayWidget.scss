@@ -1,0 +1,19 @@
+.move {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  padding: 15px;
+  width: 400px;
+  min-width: 400px;
+  border-radius: 10px;
+  cursor: move;
+  z-index: 5;
+
+  .first {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 25px;
+  }
+}

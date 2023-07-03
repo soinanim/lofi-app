@@ -1,0 +1,17 @@
+.ant-switch {
+  background: var(--main-bg);
+  transform: scale(1.4);
+  transition: background 0.3s ease;
+
+  &:hover:not(.ant-switch-disabled) {
+    background-color: var(--dark-bg);
+  }
+
+  &.ant-switch-checked {
+    background: var(--main-color);
+
+    &:hover:not(.ant-switch-disabled) {
+      background-color: var(--accent);
+    }
+  }
+}

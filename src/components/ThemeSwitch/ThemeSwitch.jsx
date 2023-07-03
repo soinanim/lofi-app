@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from 'antd';
-import styles from './ThemeSwitch.module.css';
+import './ThemeSwitch.scss';
 
 import { Icon } from '@iconify/react';
 
@@ -11,7 +11,14 @@ const ThemeSwitch = () => {
 
   return (
     <Switch
-      checkedChildren={<Icon width='18px' height='18px' icon='tabler:sun' style={{paddingTop: '10%'}}/>}
+      checkedChildren={
+        <Icon
+          width='18px'
+          height='18px'
+          icon='tabler:sun'
+          style={{ paddingTop: '10%' }}
+        />
+      }
       unCheckedChildren={
         <Icon width='18px' height='18px' icon='ph:moon-bold' />
       }

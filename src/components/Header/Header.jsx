@@ -1,18 +1,16 @@
 import React from 'react';
 import Button from '../Button/Button';
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
-import styles from './Header.module.css';
 import DateTimeWidget from '../DateTimeWidget/DateTimeWidget';
+import './Header.scss';
 
 const Header = ({ openWidget, setOpenWidget }) => {
   return (
-    <header className={styles.header}>
+    <header className='header'>
       <div></div>
       {/* <div className={styles.logo}><img src={bird} alt="bird" /></div> */}
-      <div className={styles.control}>
-        <div
-          className={styles.widget}
-          onClick={() => setOpenWidget(!openWidget)}>
+      <div className='control'>
+        <div className='widget' onClick={() => setOpenWidget(!openWidget)}>
           <DateTimeWidget isTime />
         </div>
 

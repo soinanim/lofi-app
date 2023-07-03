@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './ButtonCircle.module.css';
+import './ButtonCircle.scss';
 
 const ButtonCircle = ({ name, left, top }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -29,22 +29,20 @@ const ButtonCircle = ({ name, left, top }) => {
   }, [isPlaying, name, volume]);
 
   return (
-    <div
-      className={styles.popoverAction}
-      style={{ left: left + '%', top: top + '%' }}>
-      <div onClick={playAudio} className={styles.circleHover}>
+    <div className='popoverAction' style={{ left: left + '%', top: top + '%' }}>
+      <div onClick={playAudio} className='circleHover'>
         <audio src='audio/birds.mp3' loop className='audio-birds'></audio>
         <audio src='audio/rain.mp3' loop className='audio-rain'></audio>
       </div>
 
-      <div className={styles.popoverCard}>
+      <div className='popoverCard'>
         <h5>{name}</h5>
         {isPlaying && (
-          <div className={styles.levelInput}>
-            <div className={styles.trackFull}>
+          <div className='levelInput'>
+            <div className='trackFull'>
               <div
                 style={{ flex: `${volume} 1 0%`, display: 'initial' }}
-                className={styles.track}></div>
+                className='track'></div>
             </div>
             <input
               defaultValue={volume}
@@ -53,7 +51,7 @@ const ButtonCircle = ({ name, left, top }) => {
               max='1'
               step='0.01'
               name='value'
-              className={styles.input}
+              className='input'
               onChange={changeVolume}
             />
           </div>

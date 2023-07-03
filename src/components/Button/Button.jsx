@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Button.module.css';
+import './Button.scss';
 
 const Button = ({ text }) => {
-  return <button className={styles.button}>{text}</button>;
+  return <button className='button'>{text}</button>;
 };
 
 export default Button;
