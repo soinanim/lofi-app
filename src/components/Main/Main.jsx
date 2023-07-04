@@ -17,7 +17,7 @@ const Main = () => {
         setChangeTheme={setChangeTheme}
       />
       {openWidget && <TodayWidget />}
-      {changeTheme ? (
+      
         <video
           src="/videos/room-day.mp4"
           autoPlay
@@ -25,8 +25,9 @@ const Main = () => {
           muted
           playsInline
           className="video"
+          style={{visibility: changeTheme ? 'visible' : 'hidden'}}
         />
-      ) : (
+  
         <video
           src="/videos/room-night.mp4"
           autoPlay
@@ -34,8 +35,9 @@ const Main = () => {
           muted
           playsInline
           className="video"
+          style={{visibility: !changeTheme ? 'visible' : 'hidden'}}
         />
-      )}
+    
 
       <ButtonCircle name="rain" left="5" top="30" />
       <ButtonCircle name="birds" left="72" top="40" />
