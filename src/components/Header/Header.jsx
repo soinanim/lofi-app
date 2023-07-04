@@ -4,7 +4,7 @@ import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 import DateTimeWidget from '../DateTimeWidget/DateTimeWidget';
 import './Header.scss';
 
-const Header = ({ openWidget, setOpenWidget }) => {
+const Header = ({ openWidget, setOpenWidget, changeTheme, setChangeTheme }) => {
   return (
     <header className='header'>
       <div></div>
@@ -14,7 +14,7 @@ const Header = ({ openWidget, setOpenWidget }) => {
           <DateTimeWidget isTime />
         </div>
 
-        <ThemeSwitch />
+        <ThemeSwitch changeTheme={changeTheme} setChangeTheme={setChangeTheme}/>
 
         <div>music player</div>
         <Button type='button' text='Login' />
