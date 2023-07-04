@@ -1,8 +1,9 @@
 import React from 'react';
 import Button from '../Button/Button';
-import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
-import DateTimeWidget from '../DateTimeWidget/DateTimeWidget';
+import ThemeSwitch from '../Button/ThemeSwitch/ThemeSwitch';
+
 import './Header.scss';
+import DateTimeWidget from '../Widgets/DateTimeWidget/DateTimeWidget';
 
 const Header = ({ openWidget, setOpenWidget, changeTheme, setChangeTheme }) => {
   return (

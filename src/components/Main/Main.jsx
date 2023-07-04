@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
-import TodayWidget from "../TodayWidget/TodayWidget";
+import TodayWidget from "../Widgets/TodayWidget/TodayWidget";
 import ButtonCircle from "../Button/ButtonCircle";
 
 import "./Main.scss";
+import Theme from "../Thems/Theme";
 
 const Main = () => {
   const [openWidget, setOpenWidget] = useState(false);
@@ -17,28 +18,7 @@ const Main = () => {
         setChangeTheme={setChangeTheme}
       />
       {openWidget && <TodayWidget />}
-      
-        <video
-          src="/videos/room-day.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="video"
-          style={{visibility: changeTheme ? 'visible' : 'hidden'}}
-        />
-  
-        <video
-          src="/videos/room-night.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="video"
-          style={{visibility: !changeTheme ? 'visible' : 'hidden'}}
-        />
-    
-
+      <Theme changeTheme={changeTheme}/>
       <ButtonCircle name="rain" left="5" top="30" />
       <ButtonCircle name="birds" left="72" top="40" />
     </div>
