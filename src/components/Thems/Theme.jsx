@@ -1,28 +1,34 @@
-import React, { useEffect, useState } from "react";
-import styles from "./Theme.module.scss";
-const Theme = ({ changeTheme }) => {
-  const [nameVideo, setNameVideo] = useState("/videos/room-day.mp4");
+import React from 'react';
+import classNames from 'classnames';
+import './Theme.scss';
 
+const Theme = ({ changeTheme }) => {
   return (
-    <div className={styles.theme}>
+    <div className='theme'>
       <video
-        src="/videos/room-day.mp4"
+        src='/videos/room-day.mp4'
         autoPlay
         loop
         muted
         playsInline
-        className={styles.video}
-        style={{ visibility: changeTheme ? "visible" : "hidden" }}
+        className={classNames({
+          video: true,
+          isVisible: changeTheme,
+          isHidden: !changeTheme,
+        })}
       />
 
       <video
-        src="/videos/room-night.mp4"
+        src='/videos/room-night.mp4'
         autoPlay
         loop
         muted
         playsInline
-        className={styles.video}
-        style={{ visibility: !changeTheme ? "visible" : "hidden" }}
+        className={classNames({
+          video: true,
+          isVisible: !changeTheme,
+          isHidden: changeTheme,
+        })}
       />
     </div>
   );

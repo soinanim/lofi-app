@@ -37,6 +37,10 @@ select {
   font: inherit;
 }
 
+button {
+  border: none;
+}
+
 h3,
 h4,
 h5 {

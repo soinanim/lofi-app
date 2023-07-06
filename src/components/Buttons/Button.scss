@@ -1,16 +1,27 @@
 .button {
-  border: none;
   border-radius: 5px;
-  min-width: 90px;
-  min-height: 30px;
-  padding: 6px 20px;
   background: var(--main-bg);
   color: var(--text-color);
-  font-size: 14px;
   font-family: Roboto;
+  font-size: 14px;
   letter-spacing: 1.54px;
+  text-align: center;
   cursor: pointer;
   transition: background 0.3s ease;
+
+  &.medium {
+    min-width: 90px;
+    min-height: 30px;
+    padding: 6px 20px;
+  }
+
+  &.small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+  }
 
   &:hover {
     background: var(--dark-bg);

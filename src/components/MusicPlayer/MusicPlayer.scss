@@ -1,0 +1,20 @@
+.player {
+  display: flex;
+  align-items: center;
+
+  .prev {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .play {
+    border-radius: 0;
+  }
+
+  .next {
+    border-radius: 0;
+  }
+
+  .volume {
+    border-radius: 0 5px 5px 0;
+  }
+}
