@@ -1,0 +1,29 @@
+.timer {
+    position: absolute;
+    top: 5px;
+    left: 35%;
+    cursor: move;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 15px;
+    button {
+        cursor: pointer;
+      border-radius: 4px;
+      color: var(--text-color);
+      background-color: var(--main-bg);
+      font-weight: 500;
+      padding: 6px;
+      transition: background 0.3s ease;
+        margin-left: 5px;
+      &:hover {
+        background: var(--dark-bg);
+        color: var(--text-color);
+      }
+
+      &:active {
+        background-color: var(--main-bg);
+        color: var(--text-color);
+      }
+    }
+}

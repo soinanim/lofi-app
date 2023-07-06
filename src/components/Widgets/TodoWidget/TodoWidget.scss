@@ -1,0 +1,13 @@
+.todo {
+    position: absolute;
+    top: 5px;
+    left: 5%;
+    cursor: move;
+    z-index: 7;
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 15px;
+    width: 100%;
+    // max-width: 500px;
+    // height: 600px;
+}
