@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ButtonCircle.scss';
+import VolumeRange from '../Inputs/VolumeRange/VolumeRange';
 
 const ButtonCircle = ({ name, left, top }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -14,18 +15,9 @@ const ButtonCircle = ({ name, left, top }) => {
   };
 
   useEffect(() => {
-    let audioBirds = document.querySelector('.audio-birds');
-    let audioRain = document.querySelector('.audio-rain');
-
-    if (name === 'birds') {
-      isPlaying ? audioBirds.play() : audioBirds.pause();
-      audioBirds.volume = volume;
-    }
-
-    if (name === 'rain') {
-      isPlaying ? audioRain.play() : audioRain.pause();
-      audioRain.volume = volume;
-    }
+    let audio = document.querySelector(`.audio-${name}`);
+    isPlaying ? audio.play() : audio.pause();
+    audio.volume = volume;
   }, [isPlaying, name, volume]);
 
   return (
@@ -38,23 +30,7 @@ const ButtonCircle = ({ name, left, top }) => {
       <div className='popoverCard'>
         <h5>{name}</h5>
         {isPlaying && (
-          <div className='levelInput'>
-            <div className='trackFull'>
-              <div
-                style={{ flex: `${volume} 1 0%`, display: 'initial' }}
-                className='track'></div>
-            </div>
-            <input
-              defaultValue={volume}
-              type='range'
-              min='0'
-              max='1'
-              step='0.01'
-              name='value'
-              className='input'
-              onChange={changeVolume}
-            />
-          </div>
+          <VolumeRange volume={volume} changeVolume={changeVolume} />
         )}
       </div>
     </div>

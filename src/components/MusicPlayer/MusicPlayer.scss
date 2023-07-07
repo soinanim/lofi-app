@@ -1,20 +1,52 @@
 .player {
   display: flex;
   align-items: center;
+  flex-direction: column;
 
-  .prev {
-    border-radius: 5px 0 0 5px;
+  .buttons {
+    display: flex;
+
+    .prev {
+      border-radius: 5px 0 0 5px;
+
+      &.isVolume {
+        border-radius: 5px 0 0;
+      }
+    }
+
+    .play {
+      border-radius: 0;
+    }
+
+    .next {
+      border-radius: 0;
+    }
+
+    .volume {
+      border-radius: 0 5px 5px 0;
+
+      &.isVolume {
+        border-radius: 0 5px 0 0;
+      }
+    }
   }
 
-  .play {
-    border-radius: 0;
-  }
+  .card {
+    position: absolute;
+    top: 57px;
+    height: 34px;
+    width: 144px;
+    display: flex;
+    background-color: var(--main-bg);
+    border-radius: 0 0 8px 8px;
+    padding: 15px 7px;
+    transform: translateY(0);
+    opacity: 0;
+    transition: all 0.1s ease-out;
 
-  .next {
-    border-radius: 0;
-  }
-
-  .volume {
-    border-radius: 0 5px 5px 0;
+    &.isVisible {
+      transform: translateY(1px);
+      opacity: 1;
+    }
   }
 }

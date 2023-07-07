@@ -4,7 +4,7 @@ import TodayWidget from '../Widgets/TodayWidget/TodayWidget';
 import ButtonCircle from '../Buttons/ButtonCircle';
 
 import './Main.scss';
-import Theme from '../Thems/Theme';
+import Theme from '../Theme/Theme';
 import TimerWidget from '../Widgets/TimerWidget/TimerWidget';
 import TodoWidget from '../Widgets/TodoWidget/TodoWidget';
 

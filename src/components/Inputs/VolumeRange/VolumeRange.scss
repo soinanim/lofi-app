@@ -1,0 +1,47 @@
+.levelInput {
+  position: relative;
+  border-radius: 8px;
+
+  .trackFull {
+    display: flex;
+    background: #ffffff0d;
+    border-radius: 50px;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+
+    .track {
+      background: var(--main-color);
+      border-radius: 0 8px 8px 0;
+      height: 100%;
+    }
+  }
+
+  .input {
+    cursor: pointer;
+  }
+
+  input[type='range'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: initial;
+    display: flex;
+    justify-content: center;
+    height: 6px;
+    width: 100%;
+    position: relative;
+
+    &::-webkit-slider-thumb {
+      background: var(--main-color);
+      width: 15px;
+      height: 15px;
+      border-radius: 9px;
+      -webkit-appearance: none;
+    }
+  }
+}
