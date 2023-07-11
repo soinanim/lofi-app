@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './ButtonCircle.scss';
 import VolumeRange from '../Inputs/VolumeRange/VolumeRange';
+import './ButtonCircle.scss';
 
 const ButtonCircle = ({ name, left, top }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
 
-  const playAudio = () => {
+  const playStopAudio = () => {
     setIsPlaying((state) => !state);
   };
 
@@ -22,7 +22,7 @@ const ButtonCircle = ({ name, left, top }) => {
 
   return (
     <div className='popoverAction' style={{ left: left + '%', top: top + '%' }}>
-      <div onClick={playAudio} className='circleHover'>
+      <div onClick={playStopAudio} className='circleHover'>
         <audio src='audio/birds.mp3' loop className='audio-birds'></audio>
         <audio src='audio/rain.mp3' loop className='audio-rain'></audio>
       </div>

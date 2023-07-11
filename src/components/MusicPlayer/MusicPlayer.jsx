@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Icon } from '@iconify/react';
 import Button from '../Buttons/Button';
-import { tracks } from './utils.js';
-
-import './MusicPlayer.scss';
 import VolumeRange from '../Inputs/VolumeRange/VolumeRange';
+
+import { tracks } from './utils.js';
+import './MusicPlayer.scss';
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -14,7 +14,7 @@ const MusicPlayer = () => {
   const [isVolume, setIsVolume] = useState(false);
 
   const playStopAudio = () => {
-    setIsPlaying(!isPlaying);
+    setIsPlaying((state) => !state);
   };
 
   const playNext = () => {
@@ -40,7 +40,7 @@ const MusicPlayer = () => {
   return (
     <div className='player'>
       <div className='buttons'>
-        <audio id='track' src={tracks[currentTrack]} />
+        <audio id='track' onEnded={playNext} src={tracks[currentTrack]} />
 
         <Button
           onClick={playPrev}

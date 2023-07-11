@@ -1,0 +1,20 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+
+  .nav-icon {
+    width: 42px;
+    height: 54px;
+    background-color: var(--main-bg);
+    cursor: pointer;
+    border-radius: 0;
+
+    &:first-child {
+      border-radius: 8px 8px 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 8px 8px;
+    }
+  }
+}

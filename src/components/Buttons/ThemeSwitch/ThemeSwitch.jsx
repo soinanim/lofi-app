@@ -4,9 +4,9 @@ import './ThemeSwitch.scss';
 
 import { Icon } from '@iconify/react';
 
-const ThemeSwitch = ({ setChangeTheme, changeTheme }) => {
+const ThemeSwitch = ({ setChangeTheme }) => {
   const onChange = () => {
-    setChangeTheme(!changeTheme);
+    setChangeTheme((state) => !state);
   };
 
   return (
