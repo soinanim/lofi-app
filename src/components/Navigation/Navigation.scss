@@ -9,6 +9,15 @@
     cursor: pointer;
     border-radius: 0;
 
+    &:hover {
+      background: var(--dark-bg);
+      color: var(--text-color);
+    }
+
+    &:active {
+      background-color: var(--main-bg);
+      color: var(--text-color);
+    }
     &:first-child {
       border-radius: 8px 8px 0 0;
     }

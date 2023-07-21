@@ -30,6 +30,12 @@ const Navigation = ({ setOpenTimer, setOpenTodo }) => {
         children={<Icon width='20px' height='20px' icon='mdi:notes-outline' />}
         className='nav-icon '
       />
+        <Button
+        size='small'
+        children={<Icon width='20px' height='20px' icon='material-symbols:window-outline' />}
+        className='nav-icon '
+      />
+      
     </nav>
   );
 };

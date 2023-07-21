@@ -35,7 +35,7 @@ const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme }) => {
           onClick={muteAll}
           size='small'
           title={`${isMute ? 'Unmute all' : 'Mute all'}`}
-          children={<Icon width='18px' height='18px' icon='bxs:volume-mute' />}
+          children={<Icon width='18px' height='18px' icon={isMute ? 'bxs:volume-mute' : 'bxs:volume'} />}
         />
 
         <Button type='button' size='medium' children='Login' />
