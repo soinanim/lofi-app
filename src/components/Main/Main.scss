@@ -1,3 +1,45 @@
 .main {
   min-height: 100vh;
 }
+
+.scenes {
+  z-index: 5;
+  width: 350px;
+  position: absolute;
+  right: 15px;
+  min-width: 300px;
+  min-height: 400px;
+  padding: 15px;
+  background-color: #121212;
+  border-radius: 16px;
+  // border-radius: var(--b-r-l);
+
+  .container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-direction: column;
+    max-height: 600px;
+    overflow-y: scroll;
+    position: relative;
+    width: 100%;
+
+    .scene {
+      position: relative;
+      background-color: #0005;
+      border-radius: 16px;
+      cursor: pointer;
+      position: relative;
+      width: 100%;
+      background-color: #0005;
+
+      .scene-img {
+        border-radius: 16px;
+        height: 190px;
+        object-fit: cover;
+        width: 100%;
+        opacity: 0.7;
+      }
+    }
+  }
+}

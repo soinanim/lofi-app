@@ -4,11 +4,15 @@ import Button from '../Buttons/Button';
 
 import './Navigation.scss';
 
-const Navigation = ({ setOpenTimer, setOpenTodo }) => {
+const Navigation = ({ setIsOpen }) => {
+  const widgetHandler = (widgetName) => {
+    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
+  };
+
   return (
     <nav className='nav'>
       <Button
-        onClick={() => setOpenTimer((state) => !state)}
+        onClick={() => widgetHandler('timer')}
         size='small'
         children={
           <Icon
@@ -20,7 +24,7 @@ const Navigation = ({ setOpenTimer, setOpenTodo }) => {
         className='nav-icon'
       />
       <Button
-        onClick={() => setOpenTodo((state) => !state)}
+        onClick={() => widgetHandler('todo')}
         size='small'
         children={<Icon width='20px' height='20px' icon='gg:board' />}
         className='nav-icon'
@@ -28,14 +32,20 @@ const Navigation = ({ setOpenTimer, setOpenTodo }) => {
       <Button
         size='small'
         children={<Icon width='20px' height='20px' icon='mdi:notes-outline' />}
-        className='nav-icon '
+        className='nav-icon'
       />
-        <Button
+      <Button
+        onClick={() => widgetHandler('scenes')}
         size='small'
-        children={<Icon width='20px' height='20px' icon='material-symbols:window-outline' />}
-        className='nav-icon '
+        children={
+          <Icon
+            width='20px'
+            height='20px'
+            icon='material-symbols:window-outline'
+          />
+        }
+        className='nav-icon'
       />
-      
     </nav>
   );
 };
