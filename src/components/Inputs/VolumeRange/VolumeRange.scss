@@ -1,11 +1,11 @@
 .levelInput {
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--b-r-m);
 
   .trackFull {
     display: flex;
     background: #ffffff0d;
-    border-radius: 50px;
+    border-radius: var(--b-r-m);
     height: 100%;
     overflow: hidden;
     pointer-events: none;
@@ -16,7 +16,7 @@
 
     .track {
       background: var(--main-color);
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 var(--b-r-m) var(--b-r-m) 0;
       height: 100%;
     }
   }
@@ -40,7 +40,7 @@
       background: var(--main-color);
       width: 15px;
       height: 15px;
-      border-radius: 9px;
+      border-radius: var(--b-r-m);
       -webkit-appearance: none;
     }
   }

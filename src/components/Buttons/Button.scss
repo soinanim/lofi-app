@@ -1,5 +1,5 @@
 .button {
-  border-radius: 5px;
+  border-radius: var(--b-r-s);
   background: var(--main-bg);
   color: var(--text-color);
   font-family: Roboto;

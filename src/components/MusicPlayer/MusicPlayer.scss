@@ -7,10 +7,10 @@
     display: flex;
 
     .prev {
-      border-radius: 5px 0 0 5px;
+      border-radius: var(--b-r-s) 0 0 var(--b-r-s);
 
       &.isVolume {
-        border-radius: 5px 0 0;
+        border-radius: var(--b-r-s) 0 0;
       }
     }
 
@@ -23,10 +23,10 @@
     }
 
     .volume {
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 var(--b-r-s) var(--b-r-s) 0;
 
       &.isVolume {
-        border-radius: 0 5px 0 0;
+        border-radius: 0 var(--b-r-s) 0 0;
       }
     }
   }
@@ -38,7 +38,7 @@
     width: 144px;
     display: flex;
     background-color: var(--main-bg);
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 var(--b-r-s) var(--b-r-s);
     padding: 15px 7px;
     transform: translateY(0);
     opacity: 0;

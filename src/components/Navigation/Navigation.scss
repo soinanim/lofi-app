@@ -19,11 +19,11 @@
       color: var(--text-color);
     }
     &:first-child {
-      border-radius: 8px 8px 0 0;
+      border-radius: var(--b-r-l) var(--b-r-l) 0 0;
     }
 
     &:last-child {
-      border-radius: 0 0 8px 8px;
+      border-radius: 0 0 var(--b-r-l) var(--b-r-l);
     }
   }
 }

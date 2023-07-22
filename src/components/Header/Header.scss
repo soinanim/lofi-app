@@ -17,7 +17,7 @@
 
     .widget {
       cursor: pointer;
-      border-radius: 4px;
+      border-radius: var(--b-r-s);
       color: var(--text-color);
       background-color: var(--main-bg);
       font-weight: 500;

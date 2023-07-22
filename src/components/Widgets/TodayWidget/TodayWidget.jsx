@@ -23,7 +23,9 @@ const TodayWidget = () => {
       <div className='move' style={{ backgroundColor: colorBg, color: color }}>
         <div className='first'>
           <h3>Good evening</h3>
-          <TimeWidget isTime />
+          <h3>
+            <TimeWidget isTime />
+          </h3>
         </div>
         <h4>
           It's <TimeWidget isDate />

@@ -1,6 +1,9 @@
 :root {
   --max-width: 1100px;
-  --border-radius: 12px;
+
+  --b-r-l: 10px;
+  --b-r-m: 8px;
+  --b-r-s: 5px;
 
   --dark-bg: #333;
   --main-bg: rgba(18, 18, 18, 0.8);

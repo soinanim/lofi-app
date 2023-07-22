@@ -1,69 +1,113 @@
-import React, { useState } from "react";
-import { useTimer } from "react-timer-hook";
-import Draggable from "react-draggable";
-import "./TimerWidget.scss";
+import React, { useState } from 'react';
+import Draggable from 'react-draggable';
+import Button from '../../Buttons/Button';
+import { Icon } from '@iconify/react';
+import { useTimer } from 'react-timer-hook';
 
-function MyTimer({ expiryTimestamp }) {
-  const {
-    seconds,
-    minutes,
-    hours,
-    days,
-    isRunning,
-    start,
-    pause,
-    resume,
-    restart,
-  } = useTimer({
-    expiryTimestamp,
-    onExpire: () => console.warn("onExpire called"),
-  });
+import './TimerWidget.scss';
 
-  const time = new Date();
-  const [newTime, setNewTime] = useState(300);
+const TimerWidget = () => {
+  const TIME = new Date();
+  TIME.setSeconds(TIME.getSeconds() + 300); // 5 minutes timer
+
+  const [newTime, setNewTime] = useState(TIME);
+
+  const { seconds, minutes, hours, isRunning, start, pause, resume, restart } =
+    useTimer({
+      expiryTimestamp: TIME,
+      autoStart: false,
+    });
+
+  const [isStarted, setStarted] = useState(false);
+
+  const startTimer = () => {
+    if (isStarted) {
+      resume();
+    } else {
+      start();
+      setStarted(true);
+    }
+  };
+
+  const addFiveMin = () => {
+    let date = new Date(newTime);
+    date.setSeconds(date.getSeconds() + 300);
+
+    setNewTime(date);
+
+    restart(date);
+  };
+
+  const restartTimer = () => {
+    setNewTime(TIME);
+
+    restart(TIME);
+  };
+
   return (
     <Draggable>
-      <div style={{ textAlign: "center" }} className="timer">
-        <div style={{ fontSize: "80px" }}>
-          <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
-          <span>{seconds}</span>
+      <div className='timer'>
+        <div className='time'>
+          <span>{('0' + hours).slice(-2)} </span>
+          <span>:</span>
+          <span>{('0' + minutes).slice(-2)}</span>
+          <span> : </span>
+          <span>{('0' + seconds).slice(-2)}</span>
         </div>
-        <h2>{isRunning ? "Running" : "Not running"}</h2>
-        <button onClick={start}>Start</button>
-        <button onClick={pause}>Pause</button>
-        <button onClick={resume}>Resume</button>
-        <button
-          onClick={() => {
-            // Restarts to 5 minutes timer
+        <div className='buttons'>
+          <Button
+            onClick={addFiveMin}
+            size='small'
+            children={
+              <Icon icon='pajamas:plus' color='#fff' width='25' height='25' />
+            }
+          />
 
-            time.setSeconds(time.getSeconds() + 300);
-            restart(time);
-          }}
-        >
-          Restart
-        </button>
-        <button
-          onClick={() => {
-            // Restarts to 5 minutes timer
-            const time = new Date();
-            setNewTime(newTime + 300);
-            time.setSeconds(time.getSeconds() + newTime);
-            restart(time);
-          }}
-        >
-          Add 5 min
-        </button>
+          {isRunning ? (
+            <Button
+              onClick={pause}
+              size='small'
+              children={
+                <Icon
+                  icon='solar:pause-circle-bold-duotone'
+                  color='#ffac4d'
+                  width='35'
+                  height='35'
+                />
+              }
+            />
+          ) : (
+            <Button
+              onClick={startTimer}
+              size='small'
+              children={
+                <Icon
+                  icon='solar:play-circle-bold-duotone'
+                  color='#ffac4d'
+                  width='55px'
+                  height='55px'
+                />
+              }
+            />
+          )}
+
+          <Button
+            onClick={restartTimer}
+            size='small'
+            children={
+              <Icon
+                icon='pajamas:repeat'
+                width='18'
+                height='18'
+                hFlip={true}
+                color='#fff'
+              />
+            }
+          />
+        </div>
       </div>
     </Draggable>
   );
-}
+};
 
-export default function App() {
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + 300);
-  return (
-    <div>
-      <MyTimer expiryTimestamp={time} />
-    </div>
-  );
-}
+export default TimerWidget;
