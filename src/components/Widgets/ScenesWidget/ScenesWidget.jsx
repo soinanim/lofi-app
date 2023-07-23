@@ -1,22 +1,27 @@
-import React from "react";
-import "./ScenesWidget.scss";
+import React from 'react';
+import { SCENES } from '../../../utils/scenes';
+import classNames from 'classnames';
 
-const ScenesWidget = () => {
+import './ScenesWidget.scss';
+
+const ScenesWidget = ({ currentScene, setCurrentScene }) => {
   return (
-    <div className="scenes">
-      <div className="container">
+    <div className='scenes'>
+      <div className='container'>
         <h4>Scenes</h4>
 
-        <div className="scene">
-          <img src="/images/cozy-house.jpg" alt="" className="scene-img" />
-        </div>
-        <div className="scene">
-          {" "}
-          <img src="/images/retro-disc-day.jpg" alt="" className="scene-img" />
-        </div>
-        <div className="scene">
-          <img src="/images/station-day.jpg" alt="" className="scene-img" />
-        </div>
+        {Object.keys(SCENES).map((item) => (
+          <div className='scene' onClick={() => setCurrentScene(item)}>
+            <img
+              src={SCENES[item].image}
+              alt='background'
+              className={classNames({
+                'scene-img': true,
+                isActive: currentScene === item,
+              })}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

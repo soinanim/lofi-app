@@ -1,48 +1,56 @@
-import React from "react";
-import classNames from "classnames";
-import "./Theme.scss";
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
+import { SCENES } from '../../utils/scenes';
+import ButtonCircle from '../Buttons/ButtonCircle';
 
-const Theme = ({ changeTheme }) => {
+import './Theme.scss';
+
+const Theme = ({ currentScene, isDayTheme }) => {
+  const [background, setBackground] = useState(SCENES[currentScene].video);
+
+  useEffect(() => {
+    setBackground(SCENES[currentScene].video);
+  }, [currentScene]);
+
   return (
-    <div className="theme">
-      <video
-        src="/videos/room-day.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={classNames({
-          video: true,
-          isVisible: changeTheme,
-          isHidden: !changeTheme,
-        })}
-      />
+    <div className='background'>
+      <div className='theme'>
+        {Object.keys(SCENES).map((item) => (
+          <>
+            <video
+              src={SCENES[item].video.day}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className={classNames({
+                video: true,
+                isVisible:
+                  isDayTheme && SCENES[item].video.day === background.day,
+                isHidden:
+                  !isDayTheme || SCENES[item].video.day !== background.day,
+              })}
+            />
+            <video
+              src={SCENES[item].video.night}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className={classNames({
+                video: true,
+                isVisible:
+                  !isDayTheme && SCENES[item].video.night === background.night,
+                isHidden:
+                  isDayTheme || SCENES[item].video.night !== background.night,
+              })}
+            />
+          </>
+        ))}
+      </div>
 
-      <video
-        src="/videos/room-night.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={classNames({
-          video: true,
-          isVisible: !changeTheme,
-          isHidden: changeTheme,
-        })}
-      />
-
-      <video
-        src="/videos/room-night.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={classNames({
-          video: true,
-          isVisible: !changeTheme,
-          isHidden: changeTheme,
-        })}
-      />
+      <ButtonCircle name='rain' left='5' top='30' />
+      <ButtonCircle name='birds' left='72' top='40' />
     </div>
   );
 };
