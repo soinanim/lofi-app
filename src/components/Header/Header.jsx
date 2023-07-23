@@ -12,6 +12,7 @@ const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme }) => {
     setIsMute((state) => !state);
   };
 
+
   useEffect(() => {
     [...document.querySelectorAll('audio')].forEach(
       (el) => (el.muted = isMute)

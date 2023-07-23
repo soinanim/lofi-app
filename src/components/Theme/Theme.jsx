@@ -1,12 +1,12 @@
-import React from 'react';
-import classNames from 'classnames';
-import './Theme.scss';
+import React from "react";
+import classNames from "classnames";
+import "./Theme.scss";
 
 const Theme = ({ changeTheme }) => {
   return (
-    <div className='theme'>
+    <div className="theme">
       <video
-        src='/videos/room-day.mp4'
+        src="/videos/room-day.mp4"
         autoPlay
         loop
         muted
@@ -19,7 +19,20 @@ const Theme = ({ changeTheme }) => {
       />
 
       <video
-        src='/videos/room-night.mp4'
+        src="/videos/room-night.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={classNames({
+          video: true,
+          isVisible: !changeTheme,
+          isHidden: changeTheme,
+        })}
+      />
+
+      <video
+        src="/videos/room-night.mp4"
         autoPlay
         loop
         muted

@@ -31,6 +31,23 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  ::-webkit-scrollbar {
+    display: none;
+    width: 10px; /* ширина для вертикального скролла *//* высота для горизонтального скролла */
+    background-color: rgba(225,225,225,3);
+    border-radius: 15px;
+  padding-left: 5px;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 9em;
+ 
+}
+
 }
 
 input,

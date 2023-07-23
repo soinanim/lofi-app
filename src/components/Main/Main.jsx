@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import { Col, Row } from 'antd';
-import Header from '../Header/Header';
-import TodayWidget from '../Widgets/TodayWidget/TodayWidget';
-import ButtonCircle from '../Buttons/ButtonCircle';
-import Theme from '../Theme/Theme';
-import TimerWidget from '../Widgets/TimerWidget/TimerWidget';
-import TodoWidget from '../Widgets/TodoWidget/TodoWidget';
-import Navigation from '../Navigation/Navigation';
+import React, { useState } from "react";
+import { Col, Row } from "antd";
+import Header from "../Header/Header";
+import TodayWidget from "../Widgets/TodayWidget/TodayWidget";
+import ButtonCircle from "../Buttons/ButtonCircle";
+import Theme from "../Theme/Theme";
+import TimerWidget from "../Widgets/TimerWidget/TimerWidget";
+import TodoWidget from "../Widgets/TodoWidget/TodoWidget";
+import Navigation from "../Navigation/Navigation";
 
-import './Main.scss';
+import "./Main.scss";
+import ScenesWidget from "../Widgets/ScenesWidget/ScenesWidget";
 
 const Main = () => {
   const [isOpen, setIsOpen] = useState({
@@ -17,66 +18,38 @@ const Main = () => {
     scenes: false,
   });
   const [openToday, setOpenToday] = useState(false);
-  const [changeTheme, setChangeTheme] = useState(true);
+  const [changeTheme, setChangeTheme] = useState(0);
   const [isMute, setIsMute] = useState(false);
 
   return (
-    <div className='main'>
+    <div className="main">
       <Row>
         <Header
           isMute={isMute}
           setIsMute={setIsMute}
           setOpenToday={setOpenToday}
+          changeTheme={changeTheme}
           setChangeTheme={setChangeTheme}
         />
       </Row>
 
       <Row>
-        <Col flex='auto' className='content'>
+        <Col flex="auto" className="content">
           {openToday && <TodayWidget />}
           {isOpen.timer && <TimerWidget />}
           {isOpen.todo && <TodoWidget />}
-          {isOpen.scenes && (
-            <div className='scenes'>
-              <div className='container'>
-                <h4>Scenes</h4>
-
-                <div className='scene'>
-                  <img
-                    src='/images/cozy-house.jpg'
-                    alt=''
-                    className='scene-img'
-                  />
-                </div>
-                <div className='scene'>
-                  {' '}
-                  <img
-                    src='/images/retro-disc-day.jpg'
-                    alt=''
-                    className='scene-img'
-                  />
-                </div>
-                <div className='scene'>
-                  <img
-                    src='/images/station-day.jpg'
-                    alt=''
-                    className='scene-img'
-                  />
-                </div>
-              </div>
-            </div>
-          )}
+          {isOpen.scenes && <ScenesWidget />}
         </Col>
 
-        <Col flex='100px' className='navigation'>
+        <Col flex="100px" className="navigation">
           <Navigation setIsOpen={setIsOpen} />
         </Col>
       </Row>
 
-      <div className='background'>
+      <div className="background">
         <Theme changeTheme={changeTheme} />
-        <ButtonCircle name='rain' left='5' top='30' />
-        <ButtonCircle name='birds' left='72' top='40' />
+        <ButtonCircle name="rain" left="5" top="30" />
+        <ButtonCircle name="birds" left="72" top="40" />
       </div>
     </div>
   );
