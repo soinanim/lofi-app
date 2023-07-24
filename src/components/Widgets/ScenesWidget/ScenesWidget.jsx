@@ -13,7 +13,7 @@ const ScenesWidget = ({ currentScene, setCurrentScene }) => {
         {Object.keys(SCENES).map((item) => (
           <div className='scene' onClick={() => setCurrentScene(item)}>
             <img
-              src={SCENES[item].image}
+              src={SCENES[item].image.day}
               alt='background'
               className={classNames({
                 'scene-img': true,
