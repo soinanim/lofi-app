@@ -86,7 +86,8 @@ a {
 @media  screen and (max-width: 480px) {
   .body {
     max-width: 390px;
-    overflow: hidden;
+    max-height: 600px;
+    overflow-y: hidden;
   }
   h3 {
     font-size: 15px;

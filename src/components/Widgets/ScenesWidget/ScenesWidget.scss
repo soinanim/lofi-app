@@ -20,6 +20,18 @@
     position: relative;
     width: 100%;
 
+    .row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .close {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 0;
+      }
+    }
+
     .scene {
       position: relative;
       background-color: #0005;

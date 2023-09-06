@@ -14,7 +14,18 @@
   font-weight: 500;
   z-index: 5;
 
+  .close {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    position: absolute;
+    right: 10px;
+  }
+
   .time {
+    margin-top: 20px;
     display: flex;
     margin-bottom: 15px;
   }

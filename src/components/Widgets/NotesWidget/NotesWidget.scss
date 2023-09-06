@@ -1,0 +1,88 @@
+.notes {
+  position: absolute;
+  top: 5px;
+  left: 15%;
+  cursor: move;
+  z-index: 7;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 800px;
+  min-height: 550px;
+
+  text-align: center;
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    .close {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 40px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+  }
+
+  .list {
+    max-height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 5%;
+    li {
+      text-align: start;
+      .closeItem {
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        right: 5px;
+        top: 20px;
+        cursor: pointer;
+        z-index: 5;
+        svg {
+          path {
+            color: rgba(225, 225, 225, 0.6);
+          }
+        }
+      }
+      padding: 10px;
+      h4 {
+        color: rgba(225, 225, 225, 0.8) !important;
+      }
+      p {
+        color: rgba(225, 225, 225, 0.6);
+      }
+    }
+  }
+  .buttons {
+    span {
+      background-color: transparent;
+      input,
+      textarea {
+        background-color: transparent;
+        color: #fff;
+        ::placeholder {
+          color: #fff;
+        }
+      }
+
+      input:hover,
+      textarea:hover,
+      input:focus,
+      textarea:focus {
+        border-color: gray;
+      }
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.checked {
+  text-decoration: line-through;
+  filter: blur(1px);
+}

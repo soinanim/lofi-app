@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import Draggable from 'react-draggable';
-import Button from '../../Buttons/Button';
-import { Icon } from '@iconify/react';
-import { useTimer } from 'react-timer-hook';
+import React, { useState } from "react";
+import Draggable from "react-draggable";
+import Button from "../../Buttons/Button";
+import { Icon } from "@iconify/react";
+import { useTimer } from "react-timer-hook";
+import { CloseOutlined } from "@ant-design/icons";
 
-import './TimerWidget.scss';
+import "./TimerWidget.scss";
 
-const TimerWidget = () => {
+const TimerWidget = ({ setIsOpen }) => {
   const TIME = new Date();
   TIME.setSeconds(TIME.getSeconds() + 300); // 5 minutes timer
 
@@ -44,48 +45,56 @@ const TimerWidget = () => {
     restart(TIME);
   };
 
+  const widgetHandler = (widgetName) => {
+    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
+  };
+
   return (
     <Draggable>
-      <div className='timer'>
-        <div className='time'>
-          <span>{('0' + hours).slice(-2)} </span>
+      <div className="timer">
+        <div className="time">
+          <span>{("0" + hours).slice(-2)} </span>
           <span>:</span>
-          <span>{('0' + minutes).slice(-2)}</span>
+          <span>{("0" + minutes).slice(-2)}</span>
           <span> : </span>
-          <span>{('0' + seconds).slice(-2)}</span>
+          <span>{("0" + seconds).slice(-2)}</span>
         </div>
-        <div className='buttons'>
+        <CloseOutlined
+          className="close"
+          onClick={() => widgetHandler("timer")}
+        />
+        <div className="buttons">
           <Button
             onClick={addFiveMin}
-            size='small'
+            size="small"
             children={
-              <Icon icon='pajamas:plus' color='#fff' width='25' height='25' />
+              <Icon icon="pajamas:plus" color="#fff" width="25" height="25" />
             }
           />
 
           {isRunning ? (
             <Button
               onClick={pause}
-              size='small'
+              size="small"
               children={
                 <Icon
-                  icon='solar:pause-circle-bold-duotone'
-                  color='#ffac4d'
-                  width='35'
-                  height='35'
+                  icon="solar:pause-circle-bold-duotone"
+                  color="#ffac4d"
+                  width="35"
+                  height="35"
                 />
               }
             />
           ) : (
             <Button
               onClick={startTimer}
-              size='small'
+              size="small"
               children={
                 <Icon
-                  icon='solar:play-circle-bold-duotone'
-                  color='#ffac4d'
-                  width='55px'
-                  height='55px'
+                  icon="solar:play-circle-bold-duotone"
+                  color="#ffac4d"
+                  width="55px"
+                  height="55px"
                 />
               }
             />
@@ -93,14 +102,14 @@ const TimerWidget = () => {
 
           <Button
             onClick={restartTimer}
-            size='small'
+            size="small"
             children={
               <Icon
-                icon='pajamas:repeat'
-                width='18'
-                height='18'
+                icon="pajamas:repeat"
+                width="18"
+                height="18"
                 hFlip={true}
-                color='#fff'
+                color="#fff"
               />
             }
           />

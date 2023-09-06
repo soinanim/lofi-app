@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Board from "@asseinfo/react-kanban";
 import "./TodoWidget.scss";
 import Draggable, { moveCard } from "react-draggable";
+import { CloseOutlined } from "@ant-design/icons";
 
-const TodoWidget = () => {
+const TodoWidget = ({ setIsOpen }) => {
   const board = {
     columns: [
       {
@@ -88,6 +89,9 @@ const TodoWidget = () => {
       </Board>
     );
   }
+  const widgetHandler = (widgetName) => {
+    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
+  };
 
   function UncontrolledBoard() {
     return (
@@ -112,6 +116,7 @@ const TodoWidget = () => {
   return (
     <Draggable>
       <div className="todo">
+        <CloseOutlined className="close" onClick={() => widgetHandler('todo')}/>
         <UncontrolledBoard />
         {/* <ControlledBoard /> */}
       </div>

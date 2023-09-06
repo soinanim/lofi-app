@@ -7,9 +7,16 @@
   background-color: rgba(0, 0, 0, 0.6);
   padding: 20px;
   border-radius: 15px;
-  width: 60%;
+  width: 80%;
   text-align: center;
 
+  .close {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 40px;
+    position: absolute;
+    right: 20px;
+  }
   .react-kanban-board {
     display: inline !important;
     align-items: center !important;
@@ -17,6 +24,7 @@
   }
 
   .react-kanban-column-header {
+    margin-top: 20px;
     background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
     min-width: 150px;
@@ -93,6 +101,11 @@
 
 @media screen and (max-width: 480px) {
   .todo {
-    width: 33% !important;
+    max-width: 100vh;
+    overflow-x: scroll;
+    .close {
+      right: unset;
+      left: 20px;
+    }
   }
 }

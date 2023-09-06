@@ -1,11 +1,20 @@
 import React from "react";
 import "./ScenesWidget.scss";
+import { CloseOutlined } from '@ant-design/icons';
 
-const ScenesWidget = () => {
+const ScenesWidget = ({setIsOpen}) => {
+
+  const widgetHandler = (widgetName) => {
+    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
+  };
+  
   return (
     <div className="scenes">
       <div className="container">
-        <h4>Scenes</h4>
+        <div className="row">
+          <h2>Scenes</h2>
+          <CloseOutlined className="close" onClick={() => widgetHandler('scenes')}/>
+        </div>
 
         <div className="scene">
           <img src="/images/cozy-house.jpg" alt="" className="scene-img" />

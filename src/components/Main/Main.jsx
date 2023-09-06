@@ -10,12 +10,14 @@ import Navigation from "../Navigation/Navigation";
 
 import "./Main.scss";
 import ScenesWidget from "../Widgets/ScenesWidget/ScenesWidget";
+import NotesWidget from "../Widgets/NotesWidget/NotesWidget";
 
 const Main = () => {
   const [isOpen, setIsOpen] = useState({
     timer: false,
     todo: false,
     scenes: false,
+    notes: false,
   });
   const [openToday, setOpenToday] = useState(false);
   const [changeTheme, setChangeTheme] = useState(0);
@@ -35,10 +37,11 @@ const Main = () => {
 
       <Row>
         <Col flex="auto" className="content">
-          {openToday && <TodayWidget />}
-          {isOpen.timer && <TimerWidget />}
-          {isOpen.todo && <TodoWidget />}
-          {isOpen.scenes && <ScenesWidget />}
+          {openToday && <TodayWidget setIsOpen={setIsOpen} />}
+          {isOpen.timer && <TimerWidget setIsOpen={setIsOpen} />}
+          {isOpen.todo && <TodoWidget setIsOpen={setIsOpen} />}
+          {isOpen.scenes && <ScenesWidget setIsOpen={setIsOpen} />}
+          {isOpen.notes && <NotesWidget setIsOpen={setIsOpen} />}
         </Col>
 
         <Col flex="100px" className="navigation">

@@ -30,6 +30,7 @@ const Navigation = ({ setIsOpen }) => {
         className='nav-icon'
       />
       <Button
+        onClick={() => widgetHandler('notes')}
         size='small'
         children={<Icon width='20px' height='20px' icon='mdi:notes-outline' />}
         className='nav-icon'
