@@ -21,7 +21,6 @@ const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme }) => {
 
   return (
     <header className='header'>
-      <div></div>
       {/* <div className={styles.logo}><img src={bird} alt="bird" /></div> */}
       <div className='control'>
         <div className='widget' onClick={() => setOpenToday((state) => !state)}>

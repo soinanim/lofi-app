@@ -13,36 +13,24 @@ const Theme = ({ changeTheme }) => {
         playsInline
         className={classNames({
           video: true,
+          isVisible: !changeTheme,
+          isHidden: changeTheme,
+        })}
+      />
+
+      <video
+        src="/videos/room-night.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={classNames({
+          video: true,
           isVisible: changeTheme,
           isHidden: !changeTheme,
         })}
       />
 
-      <video
-        src="/videos/room-night.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={classNames({
-          video: true,
-          isVisible: !changeTheme,
-          isHidden: changeTheme,
-        })}
-      />
-
-      <video
-        src="/videos/room-night.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={classNames({
-          video: true,
-          isVisible: !changeTheme,
-          isHidden: changeTheme,
-        })}
-      />
     </div>
   );
 };

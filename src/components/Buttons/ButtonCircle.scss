@@ -52,3 +52,14 @@
     }
   }
 }
+
+@media  screen and (max-width: 480px) { 
+  .popoverAction {
+    left: unset;
+    top: unset;
+    width: 50px;
+  }
+  .popoverCard {
+    min-width: 80px !important;
+  }
+}

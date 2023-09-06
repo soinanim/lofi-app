@@ -22,7 +22,7 @@ const Main = () => {
   const [isMute, setIsMute] = useState(false);
 
   return (
-    <div className="main">
+    <main className="main">
       <Row>
         <Header
           isMute={isMute}
@@ -51,7 +51,7 @@ const Main = () => {
         <ButtonCircle name="rain" left="5" top="30" />
         <ButtonCircle name="birds" left="72" top="40" />
       </div>
-    </div>
+    </main>
   );
 };
 
