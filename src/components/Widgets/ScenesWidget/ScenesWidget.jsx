@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./ScenesWidget.scss";
 import { CloseOutlined } from "@ant-design/icons";
@@ -34,6 +35,9 @@ const ScenesWidget = ({ setIsOpen, setTheme }) => {
         </div>
         <div className="scene" onClick={() => setTheme("station")}>
           <img src="/images/station.jpg" alt="station" className="scene-img" />
+        </div>
+        <div className="scene" onClick={() => setTheme("shrine")}>
+          <img src="/images/shrine.jpg" alt="shrine" className="scene-img" />
         </div>
         <Button ghost onClick={() => setTheme("room")}>
           Default

@@ -7,7 +7,8 @@ import DateTimeWidget from '../Widgets/DateTimeWidget/DateTimeWidget';
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import './Header.scss';
 
-const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme, setIsOpen }) => {
+
+const Header = ({ isMute, setIsMute,setIsOpen, setChangeTheme }) => {
   const muteAll = () => {
     setIsMute((state) => !state);
   };
@@ -15,7 +16,6 @@ const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme, setIsOpen }) 
   const widgetHandler = (widgetName) => {
     setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
   };
-
   useEffect(() => {
     [...document.querySelectorAll('audio')].forEach(
       (el) => (el.muted = isMute)
@@ -38,7 +38,13 @@ const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme, setIsOpen }) 
           onClick={muteAll}
           size='small'
           title={`${isMute ? 'Unmute all' : 'Mute all'}`}
-          children={<Icon width='18px' height='18px' icon={isMute ? 'bxs:volume-mute' : 'bxs:volume'} />}
+          children={
+            <Icon
+              width='18px'
+              height='18px'
+              icon={isMute ? 'bxs:volume-mute' : 'bxs:volume'}
+            />
+          }
         />
 
         <Button type='button' size='medium' children='Login' onClick={() => widgetHandler('login')}/>

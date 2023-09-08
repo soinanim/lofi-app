@@ -46,10 +46,15 @@
         height: 190px;
         object-fit: cover;
         width: 100%;
-        opacity: 0.7;
-        filter: blur(1px);
+        filter: brightness(30%);
+        transition: all 0.2s ease-out;
+
         &:hover {
           filter: none;
+        }
+
+        &.isActive {
+          filter: brightness(90%);
         }
       }
     }
