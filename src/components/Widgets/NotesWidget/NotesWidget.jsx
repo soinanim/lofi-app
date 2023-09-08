@@ -110,7 +110,7 @@ const NotesWidget = ({ setIsOpen }) => {
             onClick={addTask}
             style={{ color: "#fff" }}
           >
-            Создать задачу
+            Create task
           </Button>
         </div>
       </div>

@@ -25,6 +25,11 @@ const ButtonCircle = ({ name, left, top }) => {
       <div onClick={playStopAudio} className='circleHover'>
         <audio src='audio/birds.mp3' loop className='audio-birds'></audio>
         <audio src='audio/rain.mp3' loop className='audio-rain'></audio>
+        <audio src='audio/cat.mp3' loop className='audio-cat'></audio>
+        <audio src='audio/comfort.mp3' loop className='audio-comfort'></audio>
+        <audio src='audio/fire.mp3' loop className='audio-fire'></audio>
+        <audio src='audio/plastinc.mp3' loop className='audio-plastinc'></audio>
+        <audio src='audio/sea.mp3' loop className='audio-sea'></audio>
       </div>
 
       <div className='popoverCard'>

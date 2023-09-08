@@ -7,11 +7,14 @@ import DateTimeWidget from '../Widgets/DateTimeWidget/DateTimeWidget';
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import './Header.scss';
 
-const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme }) => {
+const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme, setIsOpen }) => {
   const muteAll = () => {
     setIsMute((state) => !state);
   };
 
+  const widgetHandler = (widgetName) => {
+    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
+  };
 
   useEffect(() => {
     [...document.querySelectorAll('audio')].forEach(
@@ -23,7 +26,7 @@ const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme }) => {
     <header className='header'>
       {/* <div className={styles.logo}><img src={bird} alt="bird" /></div> */}
       <div className='control'>
-        <div className='widget' onClick={() => setOpenToday((state) => !state)}>
+        <div className='widget' onClick={() => widgetHandler('today')}>
           <DateTimeWidget isTime />
         </div>
 
@@ -38,7 +41,7 @@ const Header = ({ isMute, setIsMute, setOpenToday, setChangeTheme }) => {
           children={<Icon width='18px' height='18px' icon={isMute ? 'bxs:volume-mute' : 'bxs:volume'} />}
         />
 
-        <Button type='button' size='medium' children='Login' />
+        <Button type='button' size='medium' children='Login' onClick={() => widgetHandler('login')}/>
       </div>
     </header>
   );
