@@ -26,8 +26,7 @@ const Main = () => {
   });
   const [changeTheme, setChangeTheme] = useState(0);
   const [isMute, setIsMute] = useState(false);
-  const [isTheme, setTheme] = useState('room');
-  const [isDayTheme, setIsDayTheme] = useState(true);
+  const [currentTheme, setCurrentTheme] = useState('station');
 
   return (
     <main className='main'>
@@ -49,7 +48,10 @@ const Main = () => {
           {isOpen.todo && <TodoWidget setIsOpen={setIsOpen} />}
           {isOpen.mixer && <MixerWidget />}
           {isOpen.scenes && (
-            <ScenesWidget setIsOpen={setIsOpen} setTheme={setTheme} />
+            <ScenesWidget
+              setIsOpen={setIsOpen}
+              setCurrentTheme={setCurrentTheme}
+            />
           )}
           {isOpen.notes && <NotesWidget setIsOpen={setIsOpen} />}
         </Col>
@@ -60,33 +62,27 @@ const Main = () => {
       </Row>
 
       <div className='background'>
-        <Theme
-          changeTheme={changeTheme}
-          isTheme={isTheme}
-          setIsOpen={setIsOpen}
-          isOpen={isOpen}
-          isDayTheme={isDayTheme}
-        />
-        {isTheme === 'room' && (
+        <Theme changeTheme={changeTheme} currentTheme={currentTheme} />
+        {currentTheme === 'room' && (
           <div>
             <ButtonCircle name='rain' left='5' top='30' />
             <ButtonCircle name='birds' left='72' top='40' />
           </div>
         )}
-        {isTheme === 'cozy-house' && (
+        {currentTheme === 'cozy-house' && (
           <div>
             <ButtonCircle name='rain' left='25' top='20' />
             <ButtonCircle name='cat' left='2' top='50' />
             <ButtonCircle name='fire' left='80' top='60' />
           </div>
         )}
-        {isTheme === 'retro-disc' && (
+        {currentTheme === 'retro-disc' && (
           <div>
             <ButtonCircle name='plastinc' left='57' top='75' />
             <ButtonCircle name='rain' left='20' top='20' />
           </div>
         )}
-        {isTheme === 'station' && (
+        {currentTheme === 'station' && (
           <div>
             <ButtonCircle name='sea' left='57' top='75' />
             <ButtonCircle name='comfort' left='20' top='20' />
