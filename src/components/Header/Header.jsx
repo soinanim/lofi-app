@@ -7,8 +7,7 @@ import DateTimeWidget from '../Widgets/DateTimeWidget/DateTimeWidget';
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import './Header.scss';
 
-
-const Header = ({ isMute, setIsMute,setIsOpen, setChangeTheme }) => {
+const Header = ({ isMute, setIsMute, setIsOpen, setChangeTheme }) => {
   const muteAll = () => {
     setIsMute((state) => !state);
   };
@@ -42,12 +41,17 @@ const Header = ({ isMute, setIsMute,setIsOpen, setChangeTheme }) => {
             <Icon
               width='18px'
               height='18px'
-              icon={isMute ? 'bxs:volume-mute' : 'bxs:volume'}
+              icon={!isMute ? 'bxs:volume-mute' : 'bxs:volume'}
             />
           }
         />
 
-        <Button type='button' size='medium' children='Login' onClick={() => widgetHandler('login')}/>
+        <Button
+          type='button'
+          size='medium'
+          children='Login'
+          onClick={() => widgetHandler('login')}
+        />
       </div>
     </header>
   );

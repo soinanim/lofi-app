@@ -1,124 +1,113 @@
-import React, { useState } from "react";
-import Board from "@asseinfo/react-kanban";
-import "./TodoWidget.scss";
-import Draggable, { moveCard } from "react-draggable";
-import { CloseOutlined } from "@ant-design/icons";
+import React from 'react';
+import Board from '@asseinfo/react-kanban';
+import Draggable from 'react-draggable';
+import { LineOutlined } from '@ant-design/icons';
+
+import './TodoWidget.scss';
 
 const TodoWidget = ({ setIsOpen }) => {
   const board = {
     columns: [
       {
         id: 1,
-        title: "Backlog",
+        title: 'Backlog',
         cards: [
           {
             id: 1,
-            title: "Card title 1",
-            description: "Card content",
+            title: 'Card title 1',
           },
           {
             id: 2,
-            title: "Card title 2",
-            description: "Card content",
+            title: 'Card title 2',
           },
           {
             id: 3,
-            title: "Card title 3",
-            description: "Card content",
+            title: 'Card title 3',
           },
         ],
       },
       {
         id: 2,
-        title: "Doing",
+        title: 'Doing',
         cards: [
           {
             id: 9,
-            title: "Card title 9",
-            description: "Card content",
+            title: 'Card title 9',
           },
         ],
       },
       {
         id: 3,
-        title: "Q&A",
+        title: 'Q&A',
         cards: [
           {
             id: 10,
-            title: "Card title 10",
-            description: "Card content",
+            title: 'Card title 10',
           },
           {
             id: 11,
-            title: "Card title 11",
-            description: "Card content",
+            title: 'Card title 11',
           },
         ],
       },
       {
         id: 4,
-        title: "Production",
+        title: 'Production',
         cards: [
           {
             id: 12,
-            title: "Card title 12",
-            description: "Card content",
+            title: 'Card title 12',
           },
           {
             id: 13,
-            title: "Card title 13",
-            description: "Card content",
+            title: 'Card title 13',
           },
         ],
       },
     ],
   };
 
-  function ControlledBoard() {
-    // You need to control the state yourself.
-    const [controlledBoard, setBoard] = useState(board);
-
-    function handleCardMove(_card, source, destination) {
-      const updatedBoard = moveCard(controlledBoard, source, destination);
-      setBoard(updatedBoard);
-    }
-
-    return (
-      <Board onCardDragEnd={handleCardMove} disableColumnDrag>
-        {controlledBoard}
-      </Board>
-    );
-  }
   const widgetHandler = (widgetName) => {
     setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
+  };
+
+  const ColumnAdder = ({ addColumn }) => {
+    return (
+      <div
+        onClick={() =>
+          addColumn({ id: new Date().getTime(), title: 'Title', cards: [] })
+        }>
+        Add column
+      </div>
+    );
   };
 
   function UncontrolledBoard() {
     return (
       <Board
-        allowRemoveLane
         allowRenameColumn
         allowRemoveCard
-        onLaneRemove={console.log}
         onCardRemove={console.log}
-        onLaneRename={console.log}
         initialBoard={board}
-        allowAddCard={{ on: "top" }}
+        allowAddCard={{ on: 'bottom' }}
         onNewCardConfirm={(draftCard) => ({
           id: new Date().getTime(),
           ...draftCard,
         })}
         onCardNew={console.log}
+        disableColumnDrag
+        renderColumnAdder={({ addColumn }) => (
+          <ColumnAdder addColumn={addColumn} />
+        )}
       />
     );
   }
 
   return (
     <Draggable>
-      <div className="todo">
-        <CloseOutlined className="close" onClick={() => widgetHandler('todo')}/>
+      <div className='todo'>
+        <LineOutlined className='close' onClick={() => widgetHandler('todo')} />
         <UncontrolledBoard />
-        {/* <ControlledBoard /> */}
       </div>
     </Draggable>
   );

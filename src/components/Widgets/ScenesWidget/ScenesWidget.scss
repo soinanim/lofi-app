@@ -7,7 +7,7 @@
   min-height: 400px;
   padding: 15px;
   background-color: #121212;
-  border-radius: 16px;
+  border-radius: 15px;
   // border-radius: var(--b-r-l);
 
   .container {
@@ -35,14 +35,14 @@
     .scene {
       position: relative;
       background-color: #0005;
-      border-radius: 16px;
+      border-radius: 15px;
       cursor: pointer;
       position: relative;
       width: 100%;
       background-color: #0005;
 
       .scene-img {
-        border-radius: 16px;
+        border-radius: 15px;
         height: 190px;
         object-fit: cover;
         width: 100%;

@@ -12,6 +12,7 @@ const Navigation = ({ setIsOpen }) => {
   return (
     <nav className='nav'>
       <Button
+        title='timer'
         onClick={() => widgetHandler('timer')}
         size='small'
         children={
@@ -24,18 +25,21 @@ const Navigation = ({ setIsOpen }) => {
         className='nav-icon'
       />
       <Button
+        title='kanban'
         onClick={() => widgetHandler('todo')}
         size='small'
         children={<Icon width='20px' height='20px' icon='gg:board' />}
         className='nav-icon'
       />
       <Button
+        title='notes'
         onClick={() => widgetHandler('notes')}
         size='small'
         children={<Icon width='20px' height='20px' icon='mdi:notes-outline' />}
         className='nav-icon'
       />
       <Button
+        title='background'
         onClick={() => widgetHandler('scenes')}
         size='small'
         children={
@@ -43,6 +47,19 @@ const Navigation = ({ setIsOpen }) => {
             width='20px'
             height='20px'
             icon='material-symbols:window-outline'
+          />
+        }
+        className='nav-icon'
+      />
+      <Button
+        title='background'
+        onClick={() => widgetHandler('mixer')}
+        size='small'
+        children={
+          <Icon
+            width='20px'
+            height='20px'
+            icon='radix-icons:mixer-horizontal'
           />
         }
         className='nav-icon'

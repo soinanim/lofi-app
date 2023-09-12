@@ -3,24 +3,26 @@ import Draggable from 'react-draggable';
 import TimeWidget from '../DateTimeWidget/DateTimeWidget';
 import './TodayWidget.scss';
 
+// TODO: greeting at different times of the day
 // const greeting = {morning, afternoon, evening}
 const TodayWidget = () => {
-  const [colorBg, setColorBg] = useState('rgba(0,0,0,0.3)');
-  const [color, setColor] = useState('#fff');
+  // const [colorBg, setColorBg] = useState('rgba(0,0,0,0.3)');
+  // const [color, setColor] = useState('#fff');
 
-  function changeColor() {
-    setColorBg('rgba(255,255,255,0.4)');
-    setColor('#000');
-  }
+  // function changeColor() {
+  //   setColorBg('rgba(255,255,255,0.4)');
+  //   setColor('#000');
+  // }
 
-  function stopDrag() {
-    setColorBg('rgba(0,0,0,0.3)');
-    setColor('#fff');
-  }
+  // function stopDrag() {
+  //   setColorBg('rgba(0,0,0,0.3)');
+  //   setColor('#fff');
+  // }
 
   return (
-    <Draggable onDrag={changeColor} onStop={stopDrag}>
-      <div className='move' style={{ backgroundColor: colorBg, color: color }}>
+    // <Draggable onDrag={changeColor} onStop={stopDrag}>
+    <Draggable>
+      <div className='move'>
         <div className='first'>
           <h3>Good evening</h3>
           <h3>
