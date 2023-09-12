@@ -28,36 +28,39 @@ const Main = () => {
   const [isMute, setIsMute] = useState(false);
   const [currentTheme, setCurrentTheme] = useState('station');
 
+  const widgetHandler = (widgetName) => {
+    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
+  };
+
   return (
     <main className='main'>
       <Row>
         <Header
           isMute={isMute}
           setIsMute={setIsMute}
-          setIsOpen={setIsOpen}
-          changeTheme={changeTheme}
           setChangeTheme={setChangeTheme}
+          widgetHandler={widgetHandler}
         />
       </Row>
 
       <Row>
         <Col flex='auto' className='content'>
-          {isOpen.login && <Login setIsOpen={setIsOpen} />}
-          {isOpen.today && <TodayWidget setIsOpen={setIsOpen} />}
-          {isOpen.timer && <TimerWidget setIsOpen={setIsOpen} />}
-          {isOpen.todo && <TodoWidget setIsOpen={setIsOpen} />}
+          {isOpen.login && <Login widgetHandler={widgetHandler} />}
+          {isOpen.today && <TodayWidget widgetHandler={widgetHandler} />}
+          {isOpen.timer && <TimerWidget widgetHandler={widgetHandler} />}
+          {isOpen.todo && <TodoWidget widgetHandler={widgetHandler} />}
           {isOpen.mixer && <MixerWidget />}
           {isOpen.scenes && (
             <ScenesWidget
-              setIsOpen={setIsOpen}
+              widgetHandler={widgetHandler}
               setCurrentTheme={setCurrentTheme}
             />
           )}
-          {isOpen.notes && <NotesWidget setIsOpen={setIsOpen} />}
+          {isOpen.notes && <NotesWidget widgetHandler={widgetHandler} />}
         </Col>
 
         <Col flex='100px' className='navigation'>
-          <Navigation setIsOpen={setIsOpen} />
+          <Navigation widgetHandler={widgetHandler} />
         </Col>
       </Row>
 

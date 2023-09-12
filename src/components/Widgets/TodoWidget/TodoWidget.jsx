@@ -5,7 +5,7 @@ import { LineOutlined } from '@ant-design/icons';
 
 import './TodoWidget.scss';
 
-const TodoWidget = ({ setIsOpen }) => {
+const TodoWidget = ({ widgetHandler }) => {
   const board = {
     columns: [
       {
@@ -65,10 +65,6 @@ const TodoWidget = ({ setIsOpen }) => {
         ],
       },
     ],
-  };
-
-  const widgetHandler = (widgetName) => {
-    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
   };
 
   const ColumnAdder = ({ addColumn }) => {

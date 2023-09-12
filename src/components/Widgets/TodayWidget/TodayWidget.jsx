@@ -1,11 +1,13 @@
 import { React, useState } from 'react';
 import Draggable from 'react-draggable';
 import TimeWidget from '../DateTimeWidget/DateTimeWidget';
+import { LineOutlined } from '@ant-design/icons';
+
 import './TodayWidget.scss';
 
 // TODO: greeting at different times of the day
 // const greeting = {morning, afternoon, evening}
-const TodayWidget = () => {
+const TodayWidget = ({ widgetHandler }) => {
   // const [colorBg, setColorBg] = useState('rgba(0,0,0,0.3)');
   // const [color, setColor] = useState('#fff');
 
@@ -28,6 +30,10 @@ const TodayWidget = () => {
           <h3>
             <TimeWidget isTime />
           </h3>
+          <LineOutlined
+            className='close'
+            onClick={() => widgetHandler('today')}
+          />
         </div>
         <h4>
           It's <TimeWidget isDate />

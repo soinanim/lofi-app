@@ -7,7 +7,7 @@ import { LineOutlined } from '@ant-design/icons';
 
 import './TimerWidget.scss';
 
-const TimerWidget = ({ setIsOpen }) => {
+const TimerWidget = ({ widgetHandler }) => {
   const TIME = new Date();
   TIME.setSeconds(TIME.getSeconds() + 300); // 5 minutes timer
 
@@ -45,9 +45,6 @@ const TimerWidget = ({ setIsOpen }) => {
     restart(TIME);
   };
 
-  const widgetHandler = (widgetName) => {
-    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
-  };
 
   return (
     <Draggable>

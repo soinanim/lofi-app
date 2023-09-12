@@ -1,31 +1,32 @@
-import React from "react";
-import { Formik, Form, ErrorMessage } from "formik";
-import "./Login.scss";
-import { Button, Input } from "antd";
-import { CloseOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import React, { useState } from 'react';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { Button, Input } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
+
+import './Login.scss';
+
 // Валидационная схема для полей формы
 const validate = (values) => {
   const errors = {};
 
   if (!values.email) {
-    errors.email = "require field";
+    errors.email = 'require field';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = "incorrect email";
+    errors.email = 'incorrect email';
   }
 
   if (!values.password) {
-    errors.password = "require field";
+    errors.password = 'require field';
   } else if (values.password.length < 6) {
-    errors.password = "incorrect password";
+    errors.password = 'incorrect password';
   }
 
   if (!values.secondPassword) {
-    errors.secondPassword = "require field";
+    errors.secondPassword = 'require field';
   } else if (values.secondPassword.length < 6) {
-    errors.secondPassword = "incorrect password";
+    errors.secondPassword = 'incorrect password';
   } else if (values.password !== values.secondPassword) {
-    errors.secondPassword = "password mismatch";
+    errors.secondPassword = 'password mismatch';
   }
 
   return errors;
@@ -39,48 +40,44 @@ const handleSubmit = (values, { setSubmitting }) => {
   }, 400);
 };
 
-const Login = ({ setIsOpen }) => {
+const Login = ({ widgetHandler }) => {
   const [isRegister, setRegister] = useState(false);
-  const modalHandler = (widgetName) => {
-    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
-  };
 
   return (
-    <div className="Login">
-      <h1>{isRegister ? "Create new account" : "Login"}</h1>
-      <CloseOutlined className="close" onClick={() => modalHandler("login")} />
+    <div className='Login'>
+      <h1>{isRegister ? 'Create new account' : 'Login'}</h1>
+      <CloseOutlined className='close' onClick={() => widgetHandler('login')} />
       <Formik
-        initialValues={{ email: "", password: "", secondPassword: "" }}
+        initialValues={{ email: '', password: '', secondPassword: '' }}
         validate={validate}
-        onSubmit={handleSubmit}
-      >
+        onSubmit={handleSubmit}>
         {({ isSubmitting }) => (
           <Form>
-            <div className="column">
-              <label htmlFor="email">Email</label>
-              <Input type="email" name="email" />
-              <ErrorMessage name="email" component="div" />
+            <div className='column'>
+              <label htmlFor='email'>Email</label>
+              <Input type='email' name='email' />
+              <ErrorMessage name='email' component='div' />
             </div>
-            <div className="column">
-              <label htmlFor="password">Password</label>
-              <Input type="password" name="password" />
-              <ErrorMessage name="password" component="div" />
+            <div className='column'>
+              <label htmlFor='password'>Password</label>
+              <Input type='password' name='password' />
+              <ErrorMessage name='password' component='div' />
             </div>
             {isRegister && (
-              <div className="column">
-                <label htmlFor="secondPassword">Repeat password</label>
-                <Input type="password" name="secondPassword" />
-                <ErrorMessage name="secondPassword" component="div" />
+              <div className='column'>
+                <label htmlFor='secondPassword'>Repeat password</label>
+                <Input type='password' name='secondPassword' />
+                <ErrorMessage name='secondPassword' component='div' />
               </div>
             )}
-            <div className="column" style={{alignItems: 'center !important'}}>
-              <Button type="submit" disabled={isSubmitting}>
+            <div className='column' style={{ alignItems: 'center !important' }}>
+              <Button type='submit' disabled={isSubmitting}>
                 Login
               </Button>
               {!isRegister && (
                 <div>
-                  <p style={{ color: "gray" }}>no account?</p>
-                  <Button type="button" onClick={() => setRegister(true)}>
+                  <p style={{ color: 'gray' }}>no account?</p>
+                  <Button type='button' onClick={() => setRegister(true)}>
                     Register
                   </Button>
                 </div>

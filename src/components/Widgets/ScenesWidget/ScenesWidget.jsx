@@ -3,11 +3,7 @@ import './ScenesWidget.scss';
 import { LineOutlined } from '@ant-design/icons';
 import { SCENES } from '../../../utils/scenes.js';
 
-const ScenesWidget = ({ setIsOpen, setCurrentTheme }) => {
-  const widgetHandler = (widgetName) => {
-    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
-  };
-
+const ScenesWidget = ({ widgetHandler, setCurrentTheme }) => {
   return (
     <div className='scenes'>
       <div className='container'>
