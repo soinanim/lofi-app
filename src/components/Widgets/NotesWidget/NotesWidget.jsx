@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Draggable from 'react-draggable';
 import './NotesWidget.scss';
-import { LineOutlined } from '@ant-design/icons';
+import { LineOutlined, CloseOutlined } from '@ant-design/icons';
 import { Button, Input, List } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 
-const NotesWidget = ({ setIsOpen }) => {
+const NotesWidget = ({ widgetHandler }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [counter, setCounter] = useState(0);
   const [counterFlag, setCounterFlag] = useState(0);
   const [tasks, setTasks] = useState([]);
-  const widgetHandler = (widgetName) => {
-    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
-  };
 
   const allTasks = JSON.parse(localStorage.getItem('tasks'));
 
@@ -57,6 +54,7 @@ const NotesWidget = ({ setIsOpen }) => {
       setDescription('');
     }
   }
+
   return (
     <Draggable>
       <div className='notes'>
@@ -67,27 +65,27 @@ const NotesWidget = ({ setIsOpen }) => {
             onClick={() => widgetHandler('notes')}
           />
         </div>
-        <div className='list'>
-          <List
-            itemLayout='horizontal'
-            dataSource={tasks}
-            locale={{ emptyText: 'No tasks yet' }}
-            renderItem={(item, index) => (
-              <List.Item
-                className={item.checked && 'checked'}
-                onClick={() => checkTask(item.id)}>
-                <List.Item.Meta
-                  title={item.title}
-                  description={<p>{item.description}</p>}
-                />
-                <LineOutlined
-                  className='closeItem'
-                  onClick={() => deleteTask(item.id)}
-                />
-              </List.Item>
-            )}
-          />
-        </div>
+        {/* <div className='list'> */}
+        <List
+          itemLayout='horizontal'
+          dataSource={tasks}
+          locale={{ emptyText: 'No tasks yet' }}
+          renderItem={(item, index) => (
+            <List.Item
+              className={item.checked && 'checked'}
+              onClick={() => checkTask(item.id)}>
+              <List.Item.Meta
+                title={item.title}
+                description={<p>{item.description}</p>}
+              />
+              <CloseOutlined
+                className='closeItem'
+                onClick={() => deleteTask(item.id)}
+              />
+            </List.Item>
+          )}
+        />
+        {/* </div> */}
         <div className='buttons'>
           <Input
             placeholder='enter the title of your task'
@@ -103,6 +101,7 @@ const NotesWidget = ({ setIsOpen }) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+
           <Button
             ghost
             type='button'

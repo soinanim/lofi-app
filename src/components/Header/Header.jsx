@@ -7,14 +7,11 @@ import DateTimeWidget from '../Widgets/DateTimeWidget/DateTimeWidget';
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import './Header.scss';
 
-const Header = ({ isMute, setIsMute, setIsOpen, setChangeTheme }) => {
+const Header = ({ isMute, setIsMute, setChangeTheme, widgetHandler }) => {
   const muteAll = () => {
     setIsMute((state) => !state);
   };
 
-  const widgetHandler = (widgetName) => {
-    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
-  };
   useEffect(() => {
     [...document.querySelectorAll('audio')].forEach(
       (el) => (el.muted = isMute)

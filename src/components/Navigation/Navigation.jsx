@@ -4,11 +4,7 @@ import Button from '../Buttons/Button';
 
 import './Navigation.scss';
 
-const Navigation = ({ setIsOpen }) => {
-  const widgetHandler = (widgetName) => {
-    setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
-  };
-
+const Navigation = ({ widgetHandler }) => {
   return (
     <nav className='nav'>
       <Button
