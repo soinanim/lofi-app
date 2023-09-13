@@ -1,7 +1,7 @@
 .notes {
   position: absolute;
   top: 5px;
-  left: 15%;
+  left: 12%;
   cursor: move;
   z-index: 7;
   background-color: rgba(0, 0, 0, 0.6);
@@ -27,6 +27,7 @@
       position: absolute;
       right: 20px;
       top: 20px;
+      z-index: 20;
     }
   }
 
@@ -60,6 +61,7 @@
     }
   }
   .buttons {
+    z-index: 20;
     span {
       background-color: transparent;
       input,

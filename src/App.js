@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import Main from "./components/Main/Main";
 
 function App() {

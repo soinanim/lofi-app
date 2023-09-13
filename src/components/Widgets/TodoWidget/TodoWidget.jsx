@@ -1,6 +1,5 @@
 import React from 'react';
 import Board from '@asseinfo/react-kanban';
-import Draggable from 'react-draggable';
 import { LineOutlined } from '@ant-design/icons';
 
 import './TodoWidget.scss';
@@ -95,7 +94,6 @@ const TodoWidget = ({ setIsOpen }) => {
           ...draftCard,
         })}
         onCardNew={console.log}
-        disableColumnDrag
         renderColumnAdder={({ addColumn }) => (
           <ColumnAdder addColumn={addColumn} />
         )}
@@ -104,12 +102,10 @@ const TodoWidget = ({ setIsOpen }) => {
   }
 
   return (
-    <Draggable>
       <div className='todo'>
         <LineOutlined className='close' onClick={() => widgetHandler('todo')} />
         <UncontrolledBoard />
       </div>
-    </Draggable>
   );
 };
 
