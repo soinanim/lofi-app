@@ -27,7 +27,7 @@ const TodoWidget = ({ widgetHandler }) => {
       },
       {
         id: 2,
-        title: 'Doing',
+        title: 'Sprint',
         cards: [
           {
             id: 9,
@@ -37,7 +37,7 @@ const TodoWidget = ({ widgetHandler }) => {
       },
       {
         id: 3,
-        title: 'Q&A',
+        title: 'In progress',
         cards: [
           {
             id: 10,
@@ -51,7 +51,7 @@ const TodoWidget = ({ widgetHandler }) => {
       },
       {
         id: 4,
-        title: 'Production',
+        title: 'Done',
         cards: [
           {
             id: 12,
@@ -80,7 +80,7 @@ const TodoWidget = ({ widgetHandler }) => {
   function UncontrolledBoard() {
     return (
       <Board
-        allowRenameColumn
+        // allowRenameColumn
         allowRemoveCard
         onCardRemove={console.log}
         initialBoard={board}
