@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
-import { Icon } from '@iconify/react';
-import Button from '../Buttons/Button';
-import VolumeRange from '../Inputs/VolumeRange/VolumeRange';
+import React, { useState, useEffect } from "react";
+import classNames from "classnames";
+import { Icon } from "@iconify/react";
+import Button from "../Buttons/Button";
+import VolumeRange from "../Inputs/VolumeRange/VolumeRange";
 
-import { tracks } from './utils.js';
-import './MusicPlayer.scss';
+import "./MusicPlayer.scss";
+import { tracks } from "../../utils/tracks";
 
-const MusicPlayer = () => {
+const MusicPlayer = ({ setOpenArtist }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
   const [volume, setVolume] = useState(0.5);
   const [isVolume, setIsVolume] = useState(false);
+  const [isArtist, setIsArtist] = useState(false);
 
   const playStopAudio = () => {
     setIsPlaying((state) => !state);
@@ -32,72 +33,82 @@ const MusicPlayer = () => {
   };
 
   useEffect(() => {
-    let audio = document.querySelector('#track');
+    let audio = document.querySelector("#track");
     isPlaying ? audio.play() : audio.pause();
     audio.volume = volume;
+    if (currentTrack <= 4) {
+      setIsArtist(true);
+    } else {
+      setIsArtist(false);
+    }
   }, [isPlaying, volume, currentTrack]);
 
-  return (
-    <div className='player'>
-      <div className='buttons'>
-        <audio id='track' onEnded={playNext} src={tracks[currentTrack]} />
+  useEffect(() => {
+    if (isArtist) {
+      setOpenArtist((state) => !state);
+    }
+  }, [isPlaying]);
 
+  return (
+    <div className="player">
+      <div className="buttons">
+        <audio id="track" onEnded={playNext} src={tracks[currentTrack]} />
         <Button
           onClick={playPrev}
-          size='small'
+          size="small"
           children={
             <Icon
-              width='18px'
-              height='18px'
-              icon='tabler:player-track-prev-filled'
+              width="18px"
+              height="18px"
+              icon="tabler:player-track-prev-filled"
             />
           }
-          className={classNames('prev', { isVolume })}
+          className={classNames("prev", { isVolume })}
         />
 
         <Button
           onClick={playStopAudio}
-          size='small'
+          size="small"
           children={
             isPlaying ? (
               <Icon
-                width='18px'
-                height='18px'
-                icon='tabler:player-pause-filled'
+                width="18px"
+                height="18px"
+                icon="tabler:player-pause-filled"
               />
             ) : (
               <Icon
-                width='20px'
-                height='20px'
-                icon='tabler:player-play-filled'
+                width="20px"
+                height="20px"
+                icon="tabler:player-play-filled"
               />
             )
           }
-          className='play'
+          className="play"
         />
 
         <Button
           onClick={playNext}
-          size='small'
+          size="small"
           children={
             <Icon
-              width='18px'
-              height='18px'
-              icon='tabler:player-track-next-filled'
+              width="18px"
+              height="18px"
+              icon="tabler:player-track-next-filled"
             />
           }
-          className='next'
+          className="next"
         />
 
         <Button
           onClick={() => setIsVolume(!isVolume)}
-          size='small'
-          children={<Icon width='18px' height='18px' icon='bxs:volume-full' />}
-          className={classNames('volume', { isVolume })}
+          size="small"
+          children={<Icon width="18px" height="18px" icon="bxs:volume-full" />}
+          className={classNames("volume", { isVolume })}
         />
       </div>
 
-      <div className={classNames('card', { isVisible: isVolume })}>
+      <div className={classNames("card", { isVisible: isVolume })}>
         <VolumeRange volume={volume} changeVolume={changeVolume} />
       </div>
     </div>

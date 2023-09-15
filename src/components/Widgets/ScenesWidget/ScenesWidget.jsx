@@ -16,11 +16,12 @@ const ScenesWidget = ({ widgetHandler, setCurrentTheme }) => {
         </div>
 
         {Object.keys(SCENES).map((scene) => (
-          <div className='scene' onClick={() => setCurrentTheme(scene)}>
+          <div className='scene' onClick={() => setCurrentTheme(scene)} key={scene}>
             <img
               src={`/images/${scene}.jpg`}
               alt={scene}
               className='scene-img'
+              key={scene}
             />
           </div>
         ))}

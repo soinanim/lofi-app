@@ -82,14 +82,12 @@ const TodoWidget = ({ widgetHandler }) => {
       <Board
         // allowRenameColumn
         allowRemoveCard
-        onCardRemove={console.log}
         initialBoard={board}
         allowAddCard={{ on: 'bottom' }}
         onNewCardConfirm={(draftCard) => ({
           id: new Date().getTime(),
           ...draftCard,
         })}
-        onCardNew={console.log}
         renderColumnAdder={({ addColumn }) => (
           <ColumnAdder addColumn={addColumn} />
         )}

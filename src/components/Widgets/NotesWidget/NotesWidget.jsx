@@ -88,14 +88,14 @@ const NotesWidget = ({ widgetHandler }) => {
         {/* </div> */}
         <div className='buttons'>
           <Input
-            placeholder='enter the title of your task'
+            placeholder='Enter the title of your task'
             allowClear
             id='title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextArea
-            placeholder='enter a description of your task'
+            placeholder='Enter a description of your task'
             allowClear
             id='description'
             value={description}

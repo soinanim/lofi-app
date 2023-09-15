@@ -1,0 +1,21 @@
+.ArtistCard {
+  position: absolute;
+  bottom: 20px;
+  left: 10%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 4px;
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+    .icon {
+      margin-left: 5px;
+    }
+  }
+}

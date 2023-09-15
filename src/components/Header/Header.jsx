@@ -7,7 +7,7 @@ import DateTimeWidget from '../Widgets/DateTimeWidget/DateTimeWidget';
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import './Header.scss';
 
-const Header = ({ isMute, setIsMute, setChangeTheme, widgetHandler }) => {
+const Header = ({ isMute, setIsMute, setChangeTheme, widgetHandler, setOpenArtist }) => {
   const muteAll = () => {
     setIsMute((state) => !state);
   };
@@ -28,7 +28,7 @@ const Header = ({ isMute, setIsMute, setChangeTheme, widgetHandler }) => {
 
         <ThemeSwitch setChangeTheme={setChangeTheme} />
 
-        <MusicPlayer />
+        <MusicPlayer setOpenArtist={setOpenArtist}/>
 
         <Button
           onClick={muteAll}
