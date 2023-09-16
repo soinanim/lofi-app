@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { Col, Row } from "antd";
-import Header from "../Header/Header";
-import Theme from "../Theme/Theme";
-import TodayWidget from "../Widgets/TodayWidget/TodayWidget";
-import TimerWidget from "../Widgets/TimerWidget/TimerWidget";
-import TodoWidget from "../Widgets/TodoWidget/TodoWidget";
-import Navigation from "../Navigation/Navigation";
-import ScenesWidget from "../Widgets/ScenesWidget/ScenesWidget";
-import MixerWidget from "../Widgets/MixerWidget/MixerWidget";
-import NotesWidget from "../Widgets/NotesWidget/NotesWidget";
-import Login from "../Modals/Login/Login";
-import ButtonCircle from "../Buttons/ButtonCircle";
-import ArtistCard from "../Modals/ArtistCard/ArtistCard";
+import React, { useState } from 'react';
+import { Col, Row } from 'antd';
+import Header from '../Header/Header';
+import Theme from '../Theme/Theme';
+import TodayWidget from '../Widgets/TodayWidget/TodayWidget';
+import TimerWidget from '../Widgets/TimerWidget/TimerWidget';
+import TodoWidget from '../Widgets/TodoWidget/TodoWidget';
+import Navigation from '../Navigation/Navigation';
+import ScenesWidget from '../Widgets/ScenesWidget/ScenesWidget';
+import MixerWidget from '../Widgets/MixerWidget/MixerWidget';
+import NotesWidget from '../Widgets/NotesWidget/NotesWidget';
+import Login from '../Modals/Login/Login';
+import ButtonCircle from '../Buttons/ButtonCircle';
+import ArtistCard from '../Modals/ArtistCard/ArtistCard';
 
-import "./Main.scss";
-import InfoWidget from "../Widgets/InfoWidget/InfoWidget";
-import AlertComponent from "../Modals/Alert/AlertComponent";
+import './Main.scss';
+import InfoWidget from '../Widgets/InfoWidget/InfoWidget';
+import AlertComponent from '../Modals/Alert/AlertComponent';
 
 const Main = () => {
   const [isOpen, setIsOpen] = useState({
@@ -30,19 +30,19 @@ const Main = () => {
   });
   const [changeTheme, setChangeTheme] = useState(0);
   const [isMute, setIsMute] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState("station");
+  const [currentTheme, setCurrentTheme] = useState('station');
   const [openArtist, setOpenArtist] = useState(false);
   const [isOpenAlert, setIsOpenAlert] = useState(false);
   const [isAlert, setIsAlert] = useState({
-    value: "",
-    text: "",
+    value: '',
+    text: '',
   });
   const widgetHandler = (widgetName) => {
     setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
   };
 
   return (
-    <main className="main">
+    <main className='main'>
       <Row>
         <Header
           isMute={isMute}
@@ -54,7 +54,7 @@ const Main = () => {
       </Row>
 
       <Row>
-        <Col flex="auto" className="content">
+        <Col flex='auto' className='content'>
           {isOpen.login && (
             <Login
               widgetHandler={widgetHandler}
@@ -76,43 +76,43 @@ const Main = () => {
           {isOpen.notes && <NotesWidget widgetHandler={widgetHandler} />}
         </Col>
 
-        <Col className="navigation">
+        <Col className='navigation'>
           <Navigation widgetHandler={widgetHandler} />
         </Col>
       </Row>
 
-      <div className="background">
+      <div className='background'>
         <Theme changeTheme={changeTheme} currentTheme={currentTheme} />
-        {currentTheme === "room" && (
+        {currentTheme === 'room' && (
           <div>
-            <ButtonCircle name="rain" left="5" top="30" />
-            <ButtonCircle name="birds" left="72" top="40" />
+            <ButtonCircle name='rain' left='5' top='30' />
+            <ButtonCircle name='birds' left='72' top='40' />
           </div>
         )}
-        {currentTheme === "cozy-house" && (
+        {currentTheme === 'cozy-house' && (
           <div>
-            <ButtonCircle name="rain" left="25" top="20" />
-            <ButtonCircle name="cat" left="2" top="50" />
-            <ButtonCircle name="fire" left="80" top="60" />
+            <ButtonCircle name='rain' left='25' top='20' />
+            <ButtonCircle name='cat' left='2' top='50' />
+            <ButtonCircle name='fireplace' left='80' top='60' />
           </div>
         )}
-        {currentTheme === "retro-disc" && (
+        {currentTheme === 'retro-disc' && (
           <div>
-            <ButtonCircle name="plastinc" left="57" top="75" />
-            <ButtonCircle name="rain" left="20" top="20" />
+            <ButtonCircle name='vinyl' left='57' top='75' />
+            <ButtonCircle name='rain' left='20' top='20' />
           </div>
         )}
-        {currentTheme === "station" && (
+        {currentTheme === 'station' && (
           <div>
-            <ButtonCircle name="sea" left="57" top="75" />
-            <ButtonCircle name="comfort" left="20" top="20" />
+            <ButtonCircle name='sea' left='57' top='75' />
+            <ButtonCircle name='birds' left='20' top='20' />
           </div>
         )}
 
-        {currentTheme === "shrine" && (
+        {currentTheme === 'shrine' && (
           <div>
-            <ButtonCircle name="rain" left="70" top="20" />
-            <ButtonCircle name="china" left="5" top="50" />
+            <ButtonCircle name='rain' left='70' top='20' />
+            <ButtonCircle name='china' left='5' top='50' />
           </div>
         )}
       </div>

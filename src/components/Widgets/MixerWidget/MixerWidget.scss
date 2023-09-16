@@ -1,16 +1,48 @@
 .mixer {
+  font-family: Roboto, serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-width: 310px;
+  max-height: 380px;
   position: absolute;
   top: 5px;
   left: 35%;
-  padding: 20px 10px;
-  min-width: 220px;
   border-radius: var(--b-r-l);
   cursor: move;
   background-color: rgba(0, 0, 0, 0.5);
-  font-size: 35px;
-  font-weight: 500;
   z-index: 5;
+  backdrop-filter: blur(30px);
+
+  .handle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+  }
+
+  .sounds {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 5px 20px;
+    padding: 10px;
+    background-color: hsla(0, 0%, 100%, 0.05);
+    border: 1px solid hsla(0, 0%, 100%, 0.1);
+    border-radius: var(--b-r-m);
+    overflow: scroll;
+    cursor: default;
+    font-size: 16px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sound {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      height: 40px;
+    }
+  }
 }
