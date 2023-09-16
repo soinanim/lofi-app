@@ -15,6 +15,7 @@ import ArtistCard from "../Modals/ArtistCard/ArtistCard";
 
 import "./Main.scss";
 import InfoWidget from "../Widgets/InfoWidget/InfoWidget";
+import AlertComponent from "../Modals/Alert/AlertComponent";
 
 const Main = () => {
   const [isOpen, setIsOpen] = useState({
@@ -31,6 +32,11 @@ const Main = () => {
   const [isMute, setIsMute] = useState(false);
   const [currentTheme, setCurrentTheme] = useState("station");
   const [openArtist, setOpenArtist] = useState(false);
+  const [isOpenAlert, setIsOpenAlert] = useState(false);
+  const [isAlert, setIsAlert] = useState({
+    value: "",
+    text: "",
+  });
   const widgetHandler = (widgetName) => {
     setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
   };
@@ -49,12 +55,18 @@ const Main = () => {
 
       <Row>
         <Col flex="auto" className="content">
-          {isOpen.login && <Login widgetHandler={widgetHandler} />}
+          {isOpen.login && (
+            <Login
+              widgetHandler={widgetHandler}
+              setIsOpenAlert={setIsOpenAlert}
+              setIsAlert={setIsAlert}
+            />
+          )}
           {isOpen.today && <TodayWidget widgetHandler={widgetHandler} />}
           {isOpen.timer && <TimerWidget widgetHandler={widgetHandler} />}
           {isOpen.todo && <TodoWidget widgetHandler={widgetHandler} />}
           {isOpen.mixer && <MixerWidget widgetHandler={widgetHandler} />}
-          {isOpen.info && <InfoWidget widgetHandler={widgetHandler}/>}
+          {isOpen.info && <InfoWidget widgetHandler={widgetHandler} />}
           {isOpen.scenes && (
             <ScenesWidget
               widgetHandler={widgetHandler}
@@ -105,6 +117,9 @@ const Main = () => {
         )}
       </div>
       {openArtist && <ArtistCard />}
+      {isOpenAlert && (
+        <AlertComponent value={isAlert.value} text={isAlert.text} />
+      )}
     </main>
   );
 };
