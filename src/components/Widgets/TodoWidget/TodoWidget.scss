@@ -1,13 +1,12 @@
 .todo {
-  position: absolute;
-  top: 5px;
-  left: 15%;
+  top: 0%;
+  left: 5%;
   cursor: move;
-  z-index: 7;
-  background-color: var(--main-bg);
+  z-index: 5;
+  // background-color: var(--main-bg);
   padding: 20px;
-  border-radius: 15px;
-  font-family: inherit;
+  // border-radius: 15px;
+  // font-family: inherit;
 
   .close {
     width: 28px;

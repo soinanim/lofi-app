@@ -48,7 +48,7 @@ const TimerWidget = ({ widgetHandler }) => {
 
   return (
     <Draggable>
-      <div className='timer'>
+      <div className='timer widget'>
         <div className='time'>
           <span>{('0' + hours).slice(-2)} </span>
           <span>:</span>

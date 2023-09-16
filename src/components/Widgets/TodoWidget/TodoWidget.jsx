@@ -96,10 +96,10 @@ const TodoWidget = ({ widgetHandler }) => {
   }
 
   return (
-      <div className='todo'>
-        <LineOutlined className='close' onClick={() => widgetHandler('todo')} />
-        <UncontrolledBoard />
-      </div>
+    <div className='todo widget'>
+      <LineOutlined className='close' onClick={() => widgetHandler('todo')} />
+      <UncontrolledBoard />
+    </div>
   );
 };
 

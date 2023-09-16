@@ -1,23 +1,18 @@
 .mixer {
-  font-family: Roboto, serif;
   display: flex;
   flex-direction: column;
   min-width: 310px;
   max-height: 380px;
-  position: absolute;
-  top: 5px;
-  left: 35%;
-  border-radius: var(--b-r-l);
-  cursor: move;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 5;
-  backdrop-filter: blur(30px);
+  top: 105%;
+  left: 5%;
+  cursor: default;
 
   .handle {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
+    cursor: move;
   }
 
   .sounds {

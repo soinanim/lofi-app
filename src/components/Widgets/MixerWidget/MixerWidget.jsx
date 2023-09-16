@@ -124,7 +124,7 @@ const MixerWidget = ({ widgetHandler }) => {
 
   return (
     <Draggable handle='.handle'>
-      <div className='mixer '>
+      <div className='mixer widget'>
         <dib className='handle'>
           <h3>Sounds</h3>
           <LineOutlined

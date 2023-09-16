@@ -1,14 +1,12 @@
 .scenes {
-  z-index: 5;
   width: 350px;
-  position: absolute;
   right: 15px;
+  left: unset;
+  top: unset;
+  cursor: default;
   min-width: 300px;
   min-height: 400px;
   padding: 15px;
-  background-color: #121212;
-  border-radius: 15px;
-  // border-radius: var(--b-r-l);
 
   .container {
     display: flex;
@@ -61,7 +59,6 @@
     }
   }
 }
-
 
 @media screen and (max-width: 480px) {
   .scenes {

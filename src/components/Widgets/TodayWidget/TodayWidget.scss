@@ -1,13 +1,9 @@
 .move {
-  position: absolute;
   top: 70%;
   left: 25%;
   padding: 15px;
   width: 400px;
   min-width: 400px;
-  border-radius: var(--b-r-m);
-  cursor: move;
-  z-index: 5;
 
   .first {
     display: flex;

@@ -57,9 +57,9 @@ const NotesWidget = ({ widgetHandler }) => {
 
   return (
     <Draggable>
-      <div className='notes'>
+      <div className='notes widget'>
         <div className='row'>
-          <h2>Notes</h2>
+          <h3>Notes</h3>
           <LineOutlined
             className='close'
             onClick={() => widgetHandler('notes')}

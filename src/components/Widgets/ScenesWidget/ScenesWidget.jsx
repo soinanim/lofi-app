@@ -5,10 +5,10 @@ import { SCENES } from '../../../utils/scenes.js';
 
 const ScenesWidget = ({ widgetHandler, setCurrentTheme }) => {
   return (
-    <div className='scenes'>
+    <div className='scenes widget'>
       <div className='container'>
         <div className='row'>
-          <h2>Scenes</h2>
+          <h3>Scenes</h3>
           <LineOutlined
             className='close'
             onClick={() => widgetHandler('scenes')}
@@ -16,7 +16,10 @@ const ScenesWidget = ({ widgetHandler, setCurrentTheme }) => {
         </div>
 
         {Object.keys(SCENES).map((scene) => (
-          <div className='scene' onClick={() => setCurrentTheme(scene)} key={scene}>
+          <div
+            className='scene'
+            onClick={() => setCurrentTheme(scene)}
+            key={scene}>
             <img
               src={`/images/${scene}.jpg`}
               alt={scene}

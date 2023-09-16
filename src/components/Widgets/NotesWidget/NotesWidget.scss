@@ -1,17 +1,13 @@
 .notes {
-  position: absolute;
-  top: 5px;
-  left: 12%;
-  cursor: move;
-  z-index: 7;
-  background-color: var(--main-bg);
+  top: 0%;
+  left: 70%;
   padding: 20px;
-  border-radius: 15px;
-  max-width: 400px;
-  min-width: 340px;
+  max-width: 350px;
+  min-width: 300px;
   min-height: 340px;
   max-height: 740px;
   text-align: center;
+
   .row {
     margin-bottom: 10px;
 

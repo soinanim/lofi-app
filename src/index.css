@@ -59,6 +59,7 @@ button {
   border: none;
 }
 
+h2,
 h3,
 h4,
 h5 {
@@ -79,6 +80,20 @@ h5 {
 
 a {
   text-decoration: none;
+  color: var(--text-color);
+}
+
+.widget {
+  font-family: Roboto, serif;
+  position: absolute;
+  /* top: 10px;
+  left: 15%; */
+  border-radius: var(--b-r-l);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(30px);
+  cursor: move;
+
+  z-index: 7;
 }
 
 @media screen and (max-width: 480px) {
