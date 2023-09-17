@@ -10,7 +10,7 @@
   font-weight: 500;
 
   .close {
-    z-index: 20;
+    
     svg {
       width: 20px;
       height: 20px;
@@ -29,7 +29,9 @@
   .buttons {
     display: flex;
     gap: 7px;
-    z-index: 21;
+    .active {
+      z-index: 31;
+    }
     button {
       background-color: transparent;
 
@@ -37,5 +39,11 @@
         background-color: transparent;
       }
     }
+  }
+}
+@media screen and (max-width: 480px) {
+  .timer {
+    top: 90%;
+    left: 5%;
   }
 }

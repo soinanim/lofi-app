@@ -1,0 +1,26 @@
+.low-five {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  cursor: pointer;
+  &:hover {
+    h4 {
+      color: #fed1a2;
+      b {
+        color: #ec9689;
+        opacity: 1;
+        transition-delay: 0.2s;
+      }
+    }
+  }
+  h4 {
+    b {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+  }
+  .five {
+    width: 30px;
+    height: 30px;
+  }
+}

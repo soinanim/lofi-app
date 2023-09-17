@@ -67,6 +67,7 @@ const TimerWidget = ({ widgetHandler }) => {
             children={
               <Icon icon='pajamas:plus' color='#fff' width='25' height='25' />
             }
+            className="active"
           />
 
           {isRunning ? (
@@ -81,6 +82,7 @@ const TimerWidget = ({ widgetHandler }) => {
                   height='35'
                 />
               }
+              className="active"
             />
           ) : (
             <Button
@@ -109,6 +111,7 @@ const TimerWidget = ({ widgetHandler }) => {
                 color='#fff'
               />
             }
+            className="active"
           />
         </div>
       </div>

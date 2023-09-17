@@ -36,37 +36,36 @@ const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
   const [isRegister, setRegister] = useState(false);
   // Функция для обработки отправки формы
   const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
-    fetch('http://185.154.193.21:3011/register', {
-  method: "POST",
-  body: JSON.stringify({
-    email: 'admin3@mail.ru',
-    password: '123456'
-  }),
-  headers: {
-    "Content-Type": "application/json",
-  }
-})
-.then((response) => {
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return response.json();
-})
-.then((data) => {
-  console.log(data);
-  setIsOpenAlert((state) => !state);
-  setIsAlert((state) => ({
-    ...state,
-    value: "success",
-    text: "success",
-  }));
-  setSubmitting(false);
-})
-.catch((error) => {
-  console.error(error);
-  setSubmitting(false);
-});
+    //     fetch('', {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     email: 'admin3@mail.ru',
+    //     password: '123456'
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   }
+    // })
+    // .then((response) => {
+    //   if (!response.ok) {
+    //     throw new Error('Network response was not ok');
+    //   }
+    //   return response.json();
+    // })
+    // .then((data) => {
+    //   console.log(data);
+    //   setIsOpenAlert((state) => !state);
+    //   setIsAlert((state) => ({
+    //     ...state,
+    //     value: "success",
+    //     text: "success",
+    //   }));
+    //   setSubmitting(false);
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    //   setSubmitting(false);
+    // });
   };
 
   return (
@@ -74,7 +73,11 @@ const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
       <h2>{isRegister ? "Create new account" : "Login"}</h2>
       <CloseOutlined className="close" onClick={() => widgetHandler("login")} />
       <Formik
-        initialValues={{ email: "admin@mail.ru", password: "123456", secondPassword: "123456" }}
+        initialValues={{
+          email: "admin@mail.ru",
+          password: "123456",
+          secondPassword: "123456",
+        }}
         // validate={validate}
         onSubmit={handleSubmit}
       >
@@ -82,11 +85,11 @@ const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
           <Form>
             <div className="column-input">
               <label htmlFor="email">Email</label>
-              <Input type="email" name="email" id="email"/>
+              <Input type="email" name="email" id="email" />
               <ErrorMessage
                 name="password"
                 component="p"
-                style={{ color: "red", marginBottom: '5px' }}
+                style={{ color: "red", marginBottom: "5px" }}
               />
             </div>
             <div className="column-input">
@@ -95,7 +98,7 @@ const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
               <ErrorMessage
                 name="password"
                 component="p"
-                style={{ color: "red", marginBottom: '5px'  }}
+                style={{ color: "red", marginBottom: "5px" }}
               />
             </div>
             {isRegister && (
@@ -109,14 +112,16 @@ const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
                 <ErrorMessage
                   name="secondPassword"
                   component="p"
-                  style={{ color: "red", marginBottom: '5px'  }}
+                  style={{ color: "red", marginBottom: "5px" }}
                 />
               </div>
             )}
 
             {!isRegister ? (
               <div className="column">
-                <Button type="submit">Login</Button>
+                <Button htmlType="submit" ghost>
+                  Login
+                </Button>
                 <div className="column">
                   <p style={{ color: "gray" }}>no account?</p>
                   <Button
@@ -129,7 +134,9 @@ const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
               </div>
             ) : (
               <div className="column">
-                <Button htmlType="submit" ghost>Register</Button>
+                <Button htmlType="submit" ghost>
+                  Register
+                </Button>
                 <Button
                   type="button"
                   onClick={() => setRegister((state) => !state)}

@@ -7,7 +7,20 @@
   min-width: 300px;
   min-height: 400px;
   padding: 15px;
-
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    .close {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      right: 10px;
+      z-index: 20;
+    }
+  }
   .container {
     display: flex;
     gap: 8px;
@@ -17,19 +30,6 @@
     overflow-y: scroll;
     position: relative;
     width: 100%;
-
-    .row {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      .close {
-        width: 24px;
-        height: 24px;
-        position: absolute;
-        right: 0;
-        z-index: 20;
-      }
-    }
 
     .scene {
       position: relative;
@@ -62,7 +62,8 @@
 
 @media screen and (max-width: 480px) {
   .scenes {
-    width: 300px;
+    max-width: 300px;
     min-width: unset !important;
+    right: 0;
   }
 }
