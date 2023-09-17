@@ -3,6 +3,7 @@ import {
   CreditCardOutlined,
   LineOutlined,
   QrcodeOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { Space } from "antd";
 
@@ -12,6 +13,7 @@ import "./DonateWidget.scss";
 import Draggable from "react-draggable";
 const DonateWidget = ({ widgetHandler }) => {
   const [openQr, setOpenQr] = useState(false);
+
   return (
     <Draggable>
       <Space
@@ -31,6 +33,7 @@ const DonateWidget = ({ widgetHandler }) => {
             className="close"
             onClick={() => widgetHandler("donate")}
           />
+    
         </Space>
 
         <p>

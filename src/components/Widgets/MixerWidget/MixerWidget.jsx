@@ -1,115 +1,17 @@
-import React, { useState } from 'react';
-import Draggable from 'react-draggable';
-import VolumeRange from '../../Inputs/VolumeRange/VolumeRange';
-import { LineOutlined } from '@ant-design/icons';
+import React, { useState } from "react";
+import Draggable from "react-draggable";
+import VolumeRange from "../../Inputs/VolumeRange/VolumeRange";
+import { LineOutlined, CloseOutlined } from "@ant-design/icons";
+import { SOUNDS } from "../../../utils/tracks";
 
-import './MixerWidget.scss';
-
-let SOUNDS = [
-  {
-    title: 'Birds',
-    name: 'birds',
-  },
-  {
-    title: 'Night Birds',
-    name: 'comfort',
-  },
-  {
-    title: 'Cat',
-    name: 'cat',
-  },
-  {
-    title: 'Bonfire',
-    name: 'bonfire',
-  },
-  {
-    title: 'Fireplace',
-    name: 'fireplace',
-  },
-  {
-    title: 'Forest Night',
-    name: 'forest_night',
-  },
-  {
-    title: 'Keyboard',
-    name: 'keyboard',
-  },
-  {
-    title: 'City Traffic',
-    name: 'city_traffic',
-  },
-
-  {
-    title: 'People Talk',
-    name: 'people_talk_inside',
-  },
-  {
-    title: 'Rain',
-    name: 'rain',
-  },
-  {
-    title: 'Thunders',
-    name: 'thunders',
-  },
-  {
-    title: 'Wind',
-    name: 'wind',
-  },
-  {
-    title: 'River',
-    name: 'river',
-  },
-  {
-    title: 'Sea',
-    name: 'sea',
-  },
-  {
-    title: 'Ocean',
-    name: 'ocean',
-  },
-  {
-    title: 'Waves',
-    name: 'waves',
-  },
-  {
-    title: 'Underwater',
-    name: 'underwater',
-  },
-  {
-    title: 'Train',
-    name: 'train',
-  },
-  {
-    title: 'Airplane',
-    name: 'airplane',
-  },
-  {
-    title: 'Vinyl',
-    name: 'vinyl',
-  },
-  {
-    title: 'Deepspace',
-    name: 'deepspace',
-  },
-  {
-    title: 'White Noise',
-    name: 'white-noise',
-  },
-
-  {
-    title: 'Brown Noise',
-    name: 'brown-noise',
-  },
-  {
-    title: 'Pink Noise',
-    name: 'pink-noise',
-  },
-];
+import "./MixerWidget.scss";
+import { Space } from "antd";
 
 const MixerWidget = ({ widgetHandler }) => {
   const [volume, setVolume] = useState({
     ...SOUNDS.reduce((obj, sound) => ((obj[sound.name] = 0), obj), {}),
   });
+  const [collapse, setCollapse] = useState(false);
 
   const changeVolume = (e, name) => {
     setVolume((state) => ({
@@ -123,19 +25,25 @@ const MixerWidget = ({ widgetHandler }) => {
   };
 
   return (
-    <Draggable handle='.handle'>
-      <div className='mixer widget'>
-        <dib className='handle'>
+    <Draggable handle=".handle">
+      <div className="mixer widget">
+        <dib className="handle">
           <h3>Sounds</h3>
-          <LineOutlined
-            className='close'
-            onClick={() => widgetHandler('mixer')}
-          />
+          <Space direction="horizontal" size="middle" className="close-buttons">
+            <LineOutlined
+              className="collapse"
+              onClick={() => setCollapse((state) => !state)}
+            />
+            <CloseOutlined
+              className="close"
+              onClick={() => widgetHandler("mixer")}
+            />
+          </Space>
         </dib>
 
-        <div className='sounds'>
+        <div className="sounds" style={{ display: collapse ? "none" : null }}>
           {SOUNDS.map((audio) => (
-            <div className='sound'>
+            <div className="sound">
               <span>{audio.title}</span>
               <VolumeRange
                 volume={volume[audio.name]}
@@ -144,7 +52,8 @@ const MixerWidget = ({ widgetHandler }) => {
               <audio
                 id={`sound-${audio.name}`}
                 src={`audio/${audio.name}.mp3`}
-                loop></audio>
+                loop
+              ></audio>
             </div>
           ))}
         </div>
