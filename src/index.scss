@@ -78,9 +78,12 @@ h5 {
   font-size: 16px;
 }
 
-a {
-  text-decoration: none;
-  color: var(--text-color);
+a, .qrcode {
+  color: var(--main-color);
+
+  &:hover {
+    color: var(--accent);
+  }
 }
 
 .widget {

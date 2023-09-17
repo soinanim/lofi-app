@@ -1,0 +1,40 @@
+.donate {
+  min-width: 250px;
+  position: absolute;
+  left: 40%;
+  top: 30%;
+  padding: 30px;
+  max-width: 360px;
+  background-color: var(--main-bg);
+  border-radius: 4px;
+    z-index: 10;
+  .donate-qr {
+    transition: opacity 1s ease;
+    max-width: 220px;
+    max-height: 180px;
+    z-index: 50;
+  }
+  a {
+    margin-right: 10px;
+    z-index: 51;
+  }
+  h2,
+  p {
+    color: var(--text-color);
+  }
+  .close {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 40px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 30;
+  }
+}
+
+@media screen and (max-width: 480px) {
+    .donate {
+        left: 20%;
+    }
+}

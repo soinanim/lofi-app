@@ -17,6 +17,7 @@ import "./Main.scss";
 import InfoWidget from "../Widgets/InfoWidget/InfoWidget";
 import AlertComponent from "../Modals/Alert/AlertComponent";
 import HighFive from "../Buttons/HighFive/HighFive";
+import DonateWidget from "../Widgets/DonateWidget/DonateWidget";
 
 const Main = () => {
   const [isOpen, setIsOpen] = useState({
@@ -28,6 +29,7 @@ const Main = () => {
     today: false,
     mixer: false,
     info: false,
+    donate: false
   });
   const [changeTheme, setChangeTheme] = useState(0);
   const [isMute, setIsMute] = useState(false);
@@ -75,6 +77,7 @@ const Main = () => {
             />
           )}
           {isOpen.notes && <NotesWidget widgetHandler={widgetHandler} />}
+          {isOpen.donate && <DonateWidget widgetHandler={widgetHandler}/>}
         </Col>
 
         <Col className="navigation">
@@ -121,7 +124,7 @@ const Main = () => {
       {isOpenAlert && (
         <AlertComponent value={isAlert.value} text={isAlert.text} />
       )}
-      <HighFive />
+      <HighFive widgetHandler={widgetHandler}/>
     </main>
   );
 };
