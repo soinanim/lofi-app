@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "antd";
 import Header from "../Header/Header";
 import Theme from "../Theme/Theme";
@@ -29,7 +29,7 @@ const Main = () => {
     today: false,
     mixer: false,
     info: false,
-    donate: false
+    donate: false,
   });
   const [changeTheme, setChangeTheme] = useState(0);
   const [isMute, setIsMute] = useState(false);
@@ -40,9 +40,14 @@ const Main = () => {
     value: "",
     text: "",
   });
+
   const widgetHandler = (widgetName) => {
     setIsOpen((state) => ({ ...state, [widgetName]: !state[widgetName] }));
   };
+
+  useEffect(() => {
+    setTimeout(() => setIsOpenAlert(false), 10000);
+  }, [isOpenAlert]);
 
   return (
     <main className="main">
@@ -77,7 +82,7 @@ const Main = () => {
             />
           )}
           {isOpen.notes && <NotesWidget widgetHandler={widgetHandler} />}
-          {isOpen.donate && <DonateWidget widgetHandler={widgetHandler}/>}
+          {isOpen.donate && <DonateWidget widgetHandler={widgetHandler} />}
         </Col>
 
         <Col className="navigation">
@@ -124,7 +129,7 @@ const Main = () => {
       {isOpenAlert && (
         <AlertComponent value={isAlert.value} text={isAlert.text} />
       )}
-      <HighFive widgetHandler={widgetHandler}/>
+      <HighFive widgetHandler={widgetHandler} />
     </main>
   );
 };

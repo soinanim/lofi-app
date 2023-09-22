@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
 
 import Button from '../Buttons/Button';
@@ -14,6 +14,17 @@ const Header = ({
   widgetHandler,
   setOpenArtist,
 }) => {
+  const [logined, setLogined] = useState(false);
+  const [user, setUser] = useState([]);
+  const isLogin = JSON.parse(localStorage.getItem('login'));
+
+  useEffect(() => {
+    if (isLogin) {
+      setLogined(true);
+      setUser(isLogin);
+    }
+}, [isLogin]);
+
   const muteAll = () => {
     setIsMute((state) => !state);
   };
@@ -52,9 +63,17 @@ const Header = ({
         <Button
           type='button'
           size='medium'
-          children='Login'
-          onClick={() => widgetHandler('login')}
+          children={logined ? 'Profile' : 'Login'}
+          onClick={() => widgetHandler(logined ? 'profile' : 'login')}
         />
+        {logined && (
+           <Button
+           type='button'
+           size='medium'
+           children='Chat'
+           onClick={() => widgetHandler('chat')}
+         />
+        )}
       </div>
     </header>
   );

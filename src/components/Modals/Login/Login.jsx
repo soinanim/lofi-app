@@ -1,153 +1,190 @@
-import React, { useState } from "react";
-import { Formik, Form, ErrorMessage } from "formik";
+import React, { useEffect, useState } from "react";
 import { Button, Input } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
+import axios from "axios";
 
 import "./Login.scss";
 
-// Валидационная схема для полей формы
-const validate = (values) => {
-  const errors = {};
-
-  if (!values.email) {
-    errors.email = "require field";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = "incorrect email";
-  }
-
-  if (!values.password) {
-    errors.password = "require field";
-  } else if (values.password.length < 6) {
-    errors.password = "incorrect password";
-  }
-
-  if (!values.secondPassword) {
-    errors.secondPassword = "require field";
-  } else if (values.secondPassword.length < 6) {
-    errors.secondPassword = "incorrect password";
-  } else if (values.password !== values.secondPassword) {
-    errors.secondPassword = "password mismatch";
-  }
-
-  return errors;
-};
-
 const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
   const [isRegister, setRegister] = useState(false);
-  // Функция для обработки отправки формы
-  const handleSubmit = (values, { setSubmitting }) => {
-    //     fetch('', {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     email: 'admin3@mail.ru',
-    //     password: '123456'
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   }
-    // })
-    // .then((response) => {
-    //   if (!response.ok) {
-    //     throw new Error('Network response was not ok');
-    //   }
-    //   return response.json();
-    // })
-    // .then((data) => {
-    //   console.log(data);
-    //   setIsOpenAlert((state) => !state);
-    //   setIsAlert((state) => ({
-    //     ...state,
-    //     value: "success",
-    //     text: "success",
-    //   }));
-    //   setSubmitting(false);
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    //   setSubmitting(false);
-    // });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [secondPasword, setSecondPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [hashPassword, setHashPassword] = useState("");
+
+  useEffect(() => {
+    if (isRegister) {
+      if (password.length < 5) {
+        setError("short password");
+      } else {
+        if (password !== secondPasword) {
+          console.log(secondPasword);
+          console.log(password);
+          setError(`passwords don't match`);
+        } else {
+          setError("");
+        }
+      }
+    }
+  }, [password, secondPasword]);
+
+  useEffect(() => {
+    if (email.length > 3) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isValid = emailRegex.test(email);
+
+      setIsValidEmail(isValid);
+    }
+  }, [email]);
+
+  const onSubmit = () => {
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+
+    if (password && isValidEmail) {
+      if (isRegister) {
+        formData.append("format", "register");
+
+        // Отправка POST-запроса на регистрацию
+        axios
+          .post("/index.php", formData)
+          .then((response) => {
+            if (response.data) {
+              setIsOpenAlert(true);
+
+              setIsAlert((state) => ({
+                ...state,
+                value: "success",
+                text: `You have successfully registered`,
+              }));
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            setIsOpenAlert(true);
+
+            setIsAlert((state) => ({
+              ...state,
+              value: "error",
+              text: `${error}`,
+            }));
+          });
+      } else {
+        formData.append("format", "login");
+
+        axios
+          .post("/index.php", formData)
+          .then((response) => {
+            if (response.data) {
+              console.log(response.data);
+              // localStorage.setItem("login", JSON.stringify(response.data));
+
+              setIsOpenAlert(true);
+
+              setIsAlert((state) => ({
+                ...state,
+                value: "success",
+                text: `Login successfully completed`,
+              }));
+            } else {
+              setIsOpenAlert(true);
+
+              setIsAlert((state) => ({
+                ...state,
+                value: "error",
+                text: `Login error`,
+              }));
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            // Обработка ошибки
+            setIsOpenAlert(true);
+
+            setIsAlert((state) => ({
+              ...state,
+              value: "error",
+              text: `${error}`,
+            }));
+          });
+      }
+      setError("");
+    } else {
+      setError("fill in all the fields with the correct data");
+    }
   };
 
   return (
     <div className="Login">
       <h2>{isRegister ? "Create new account" : "Login"}</h2>
       <CloseOutlined className="close" onClick={() => widgetHandler("login")} />
-      <Formik
-        initialValues={{
-          email: "admin@mail.ru",
-          password: "123456",
-          secondPassword: "123456",
-        }}
-        // validate={validate}
-        onSubmit={handleSubmit}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <div className="column-input">
-              <label htmlFor="email">Email</label>
-              <Input type="email" name="email" id="email" />
-              <ErrorMessage
-                name="password"
-                component="p"
-                style={{ color: "red", marginBottom: "5px" }}
-              />
-            </div>
-            <div className="column-input">
-              <label htmlFor="password">Password</label>
-              <Input type="password" name="password" id="password" />
-              <ErrorMessage
-                name="password"
-                component="p"
-                style={{ color: "red", marginBottom: "5px" }}
-              />
-            </div>
-            {isRegister && (
-              <div className="column-input">
-                <label htmlFor="secondPassword">Confrim password</label>
-                <Input
-                  type="password"
-                  name="secondPassword"
-                  id="secondPassword"
-                />
-                <ErrorMessage
-                  name="secondPassword"
-                  component="p"
-                  style={{ color: "red", marginBottom: "5px" }}
-                />
-              </div>
-            )}
-
-            {!isRegister ? (
-              <div className="column">
-                <Button htmlType="submit" ghost>
-                  Login
-                </Button>
-                <div className="column">
-                  <p style={{ color: "gray" }}>no account?</p>
-                  <Button
-                    type="button"
-                    onClick={() => setRegister((state) => !state)}
-                  >
-                    Register
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div className="column">
-                <Button htmlType="submit" ghost>
-                  Register
-                </Button>
-                <Button
-                  type="button"
-                  onClick={() => setRegister((state) => !state)}
-                >
-                  Back
-                </Button>
-              </div>
-            )}
-          </Form>
+      <div className="form">
+        <div className="column-input">
+          <label htmlFor="email">Email</label>
+          <Input
+            type="email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          {!isValidEmail && (
+            <p style={{ color: "red" }}>Enter the correct email</p>
+          )}
+        </div>
+        <div className="column-input">
+          <label htmlFor="password">Password</label>
+          <Input
+            type="password"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          {error.length > 1 && <p style={{ color: "red" }}>{error}</p>}
+        </div>
+        {isRegister && (
+          <div className="column-input">
+            <label htmlFor="secondPassword">Confrim password</label>
+            <Input
+              type="password"
+              id="secondPassword"
+              onChange={(e) => setSecondPassword(e.target.value)}
+              value={secondPasword}
+            />
+          </div>
         )}
-      </Formik>
+
+        {!isRegister ? (
+          <div className="column buttons">
+            <Button ghost onClick={onSubmit}>
+              Login
+            </Button>
+            <div className="column">
+              <p style={{ color: "gray" }}>no account?</p>
+              <Button
+                type="button"
+                onClick={() => setRegister((state) => !state)}
+              >
+                Register
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div className="column">
+            <Button ghost onClick={onSubmit}>
+              Register
+            </Button>
+            <Button
+              type="button"
+              onClick={() => setRegister((state) => !state)}
+            >
+              Back
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
