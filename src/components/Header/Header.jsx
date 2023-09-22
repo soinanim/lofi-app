@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Icon } from '@iconify/react';
+import React, { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
 
-import Button from '../Buttons/Button';
-import ThemeSwitch from '../Buttons/ThemeSwitch/ThemeSwitch';
-import DateTimeWidget from '../Widgets/DateTimeWidget/DateTimeWidget';
-import MusicPlayer from '../MusicPlayer/MusicPlayer';
-import './Header.scss';
+import Button from "../Buttons/Button";
+import ThemeSwitch from "../Buttons/ThemeSwitch/ThemeSwitch";
+import DateTimeWidget from "../Widgets/DateTimeWidget/DateTimeWidget";
+import MusicPlayer from "../MusicPlayer/MusicPlayer";
+import "./Header.scss";
 
 const Header = ({
   isMute,
@@ -16,30 +16,32 @@ const Header = ({
 }) => {
   const [logined, setLogined] = useState(false);
   const [user, setUser] = useState([]);
-  const isLogin = JSON.parse(localStorage.getItem('login'));
+  const isLogin = JSON.parse(localStorage.getItem("login"));
 
   useEffect(() => {
     if (isLogin) {
       setLogined(true);
       setUser(isLogin);
+    } else {
+      setLogined(false);
     }
-}, [isLogin]);
+  }, [isLogin]);
 
   const muteAll = () => {
     setIsMute((state) => !state);
   };
 
   useEffect(() => {
-    [...document.querySelectorAll('audio')].forEach(
+    [...document.querySelectorAll("audio")].forEach(
       (el) => (el.muted = isMute)
     );
   }, [isMute]);
 
   return (
-    <header className='header'>
+    <header className="header">
       {/* <div className={styles.logo}><img src={bird} alt="bird" /></div> */}
-      <div className='control'>
-        <div className='time-widget' onClick={() => widgetHandler('today')}>
+      <div className="control">
+        <div className="time-widget" onClick={() => widgetHandler("today")}>
           <DateTimeWidget isTime />
         </div>
 
@@ -49,31 +51,32 @@ const Header = ({
 
         <Button
           onClick={muteAll}
-          size='small'
-          title={`${isMute ? 'Unmute all' : 'Mute all'}`}
+          size="small"
+          title={`${isMute ? "Unmute all" : "Mute all"}`}
           children={
             <Icon
-              width='18px'
-              height='18px'
-              icon={!isMute ? 'bxs:volume-mute' : 'bxs:volume'}
+              width="18px"
+              height="18px"
+              icon={!isMute ? "bxs:volume-mute" : "bxs:volume"}
             />
           }
         />
 
-        <Button
-          type='button'
-          size='medium'
-          children={logined ? 'Profile' : 'Login'}
-          onClick={() => widgetHandler(logined ? 'profile' : 'login')}
-        />
         {logined && (
-           <Button
-           type='button'
-           size='medium'
-           children='Chat'
-           onClick={() => widgetHandler('chat')}
-         />
+          <Button
+            type="button"
+            size="medium"
+            children="Chat"
+            onClick={() => widgetHandler("chat")}
+          />
         )}
+
+        <Button
+          type="button"
+          size="medium"
+          children={logined ? "Profile" : "Login"}
+          onClick={() => widgetHandler(logined ? "profile" : "login")}
+        />
       </div>
     </header>
   );

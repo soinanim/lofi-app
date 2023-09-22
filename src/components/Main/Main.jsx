@@ -18,6 +18,7 @@ import InfoWidget from "../Widgets/InfoWidget/InfoWidget";
 import AlertComponent from "../Modals/Alert/AlertComponent";
 import HighFive from "../Buttons/HighFive/HighFive";
 import DonateWidget from "../Widgets/DonateWidget/DonateWidget";
+import Chat from "../Chat/Chat";
 
 const Main = () => {
   const [isOpen, setIsOpen] = useState({
@@ -30,6 +31,7 @@ const Main = () => {
     mixer: false,
     info: false,
     donate: false,
+    chat: false,
   });
   const [changeTheme, setChangeTheme] = useState(0);
   const [isMute, setIsMute] = useState(false);
@@ -83,6 +85,7 @@ const Main = () => {
           )}
           {isOpen.notes && <NotesWidget widgetHandler={widgetHandler} />}
           {isOpen.donate && <DonateWidget widgetHandler={widgetHandler} />}
+          {isOpen.chat && <Chat widgetHandler={widgetHandler} />}
         </Col>
 
         <Col className="navigation">

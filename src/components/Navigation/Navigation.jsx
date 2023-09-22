@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import Button from "../Buttons/Button";
 
 import "./Navigation.scss";
 
 const Navigation = ({ widgetHandler }) => {
+  const [logined, setLogined] = useState(false);
+  const isLogin = JSON.parse(localStorage.getItem("login"));
+
+  useEffect(() => {
+    if (isLogin) {
+      setLogined(true);
+    } else {
+      setLogined(false);
+    }
+  }, [isLogin]);
+
   return (
     <nav className="nav">
       <Button
@@ -42,7 +53,8 @@ const Navigation = ({ widgetHandler }) => {
           <Icon
             width="20px"
             height="20px"
-            icon="material-symbols:window-outline"
+            // icon="material-symbols:window-outline"
+            icon="material-symbols:mms-outline"
           />
         }
         className="nav-icon"
@@ -60,6 +72,18 @@ const Navigation = ({ widgetHandler }) => {
         }
         className="nav-icon"
       />
+      {logined && (
+        <Button
+          title="chat"
+          onClick={() => widgetHandler("chat")}
+          size="small"
+          children={
+            <Icon width="20px" height="20px" icon="mdi:forum-outline" />
+          }
+          className="nav-icon"
+        />
+      )}
+
       <Button
         title="info"
         onClick={() => widgetHandler("info")}

@@ -61,6 +61,7 @@ const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
                 text: `You have successfully registered`,
               }));
             }
+            setRegister(false);
           })
           .catch((error) => {
             console.error(error);
@@ -79,8 +80,8 @@ const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
           .post("/index.php", formData)
           .then((response) => {
             if (response.data) {
-              console.log(response.data);
-              // localStorage.setItem("login", JSON.stringify(response.data));
+              // console.log(response.data);
+              localStorage.setItem("login", JSON.stringify(response.data));
 
               setIsOpenAlert(true);
 
@@ -89,6 +90,7 @@ const Login = ({ widgetHandler, setIsOpenAlert, setIsAlert }) => {
                 value: "success",
                 text: `Login successfully completed`,
               }));
+              widgetHandler("login");
             } else {
               setIsOpenAlert(true);
 
