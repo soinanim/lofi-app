@@ -85,7 +85,7 @@ const Main = () => {
           )}
           {isOpen.notes && <NotesWidget widgetHandler={widgetHandler} />}
           {isOpen.donate && <DonateWidget widgetHandler={widgetHandler} />}
-          {isOpen.chat && <Chat widgetHandler={widgetHandler} />}
+          {isOpen.chat && <Chat widgetHandler={widgetHandler} isOpen={isOpen}/>}
         </Col>
 
         <Col className="navigation">

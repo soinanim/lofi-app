@@ -5,7 +5,7 @@ import Button from "../Buttons/Button";
 import "./Navigation.scss";
 
 const Navigation = ({ widgetHandler }) => {
-  const [logined, setLogined] = useState(false);
+  const [logined, setLogined] = useState(true);
   const isLogin = JSON.parse(localStorage.getItem("login"));
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const Navigation = ({ widgetHandler }) => {
             width="20px"
             height="20px"
             // icon="material-symbols:window-outline"
-            icon="material-symbols:mms-outline"
+            icon="material-symbols:image-outline"
           />
         }
         className="nav-icon"

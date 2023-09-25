@@ -3,6 +3,7 @@
   z-index: 15;
   left: 40%;
   top: 30%;
+  min-height: 300px;
   padding: 30px 20px;
   max-height: 600px;
   background-color: rgba(18, 18, 18, 0.9);
@@ -30,6 +31,7 @@
     max-height: 260px;
     overflow-y: scroll;
     padding: 10px;
+    z-index: 25;
     .self-message,
     .other-message {
       display: flex;
@@ -38,11 +40,22 @@
       .other-message-text {
         padding: 6px;
         max-width: 170px;
+        border: 1px solid transparent;
+        border-radius: 5px;
       }
     }
 
+    .date {
+      font-size: 10px;
+    }
     .self-message {
       justify-content: flex-end;
+    }
+    .self-message-author {
+      text-align: end;
+    }
+    .other-message-author {
+      text-align: start;
     }
     .other-message {
       justify-content: flex-start;
@@ -58,11 +71,17 @@
   .chat-footer {
     z-index: 20;
     textarea {
-      max-height: 20px;
+      width: 250px;
+      height: 20px;
     }
     .nav-icon {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 32px;
       background: var(--dark-bg);
-
       cursor: pointer;
       border: none;
 
@@ -76,5 +95,13 @@
         color: var(--text-color);
       }
     }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .chat {
+    width: 336px;
+    left: 5%;
+    top: 10%;
   }
 }

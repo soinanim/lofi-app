@@ -62,15 +62,6 @@ const Header = ({
           }
         />
 
-        {logined && (
-          <Button
-            type="button"
-            size="medium"
-            children="Chat"
-            onClick={() => widgetHandler("chat")}
-          />
-        )}
-
         <Button
           type="button"
           size="medium"

@@ -58,12 +58,16 @@ select {
 button {
   border: none;
 }
+p {
+  font-family: 'sans-serif';
+}
 
 h2,
 h3,
 h4,
 h5 {
   font-weight: 500;
+  font-family: Roboto, serif;
 }
 
 h3 {
@@ -78,7 +82,8 @@ h5 {
   font-size: 16px;
 }
 
-a, .qrcode {
+a,
+.qrcode {
   color: var(--main-color);
 
   &:hover {
